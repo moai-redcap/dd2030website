@@ -1,7 +1,10 @@
+import {Box} from '@chakra-ui/react'
+import {About} from '@/components/home/About'
+
 export default function Page() {
   return (
-    <div>
-      It works!
-    </div>
+    <Box>
+      <About />
+    </Box>
   )
 }
