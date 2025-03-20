@@ -1,18 +1,11 @@
-import '../policies.css'
-import {Box, Heading} from '@chakra-ui/react'
+import fs from 'fs'
+import path from 'path'
+import { marked } from 'marked'
+import {Markdown} from '@/components/Markdown'
 
-export default function Page() {
-  return (
-    <Box
-      maxW={'800px'}
-      mx={'auto'}
-      color={'#333'}
-      mt={10}
-      mb={20}
-      fontSize={'sm'}
-    >
-      <Heading fontSize={'2xl'} mb={10} textAlign={'center'}>プライバシーポリシー</Heading>
-      <p>準備中です</p>
-    </Box>
-  )
+export default async function Page() {
+  const filePath = path.join(process.cwd(), 'markdown', 'privacy.md')
+  const markdown = fs.readFileSync(filePath, 'utf-8')
+  const content = await marked(markdown)
+  return <Markdown content={content} />
 }

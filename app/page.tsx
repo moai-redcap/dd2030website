@@ -1,10 +1,11 @@
-import {Box} from '@chakra-ui/react'
-import {About} from '@/components/home/About'
+import fs from 'fs'
+import path from 'path'
+import { marked } from 'marked'
+import {Markdown} from '@/components/Markdown'
 
-export default function Page() {
-  return (
-    <Box>
-      <About />
-    </Box>
-  )
+export default async function Page() {
+  const filePath = path.join(process.cwd(), 'markdown', 'main.md')
+  const markdown = fs.readFileSync(filePath, 'utf-8')
+  const content = await marked(markdown)
+  return <Markdown content={content} />
 }
