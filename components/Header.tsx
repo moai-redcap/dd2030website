@@ -9,8 +9,10 @@ export function Header() {
       mb={5}
     >
       <Link href={'/'}>
-        <Heading fontSize={'2xl'}>デジタル民主主義2030</Heading>
-        <Text>デジ民2030プロジェクトポータルサイト</Text>
+        <Box display={'inline-block'}>
+          <Heading fontSize={'2xl'}>デジタル民主主義2030</Heading>
+          <Text>デジ民2030プロジェクトポータルサイト</Text>
+        </Box>
       </Link>
     </Box>
   )
