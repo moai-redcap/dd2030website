@@ -1,5 +1,5 @@
-export function Markdown({content}: {content: string}) {
+export function Markdown({content}: { content: string }) {
   return (
-    <div className={'content'} dangerouslySetInnerHTML={{ __html: content }} />
+    <div className={'content'} dangerouslySetInnerHTML={{__html: content}}/>
   )
 }

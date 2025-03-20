@@ -13,16 +13,16 @@ export const metadata: Metadata = {
 
 export default function RootLayout({children}: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="ja">
+    <html lang="ja" suppressHydrationWarning>
       <body>
         <ClientProvider>
           <Box className={'container'}>
             <Box mx={'auto'} maxW={'1000px'}>
-              <Header />
+              <Header/>
               {children}
             </Box>
           </Box>
-          <Footer />
+          <Footer/>
         </ClientProvider>
       </body>
     </html>
