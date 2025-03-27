@@ -8,7 +8,7 @@ export default async function Page() {
   return (
     <Box>
       <Box mb={20}>
-        <Image src={'/example.webp'} alt={'デジタル民主主義2030プロジェクト'}/>
+        <Image src={'/cover.png'} alt={'デジタル民主主義2030プロジェクト'} />
       </Box>
       <Box mx={'auto'} maxW={'900px'} mb={20}>
         <Heading fontSize={'3xl'} mb={5}>デジタル民主主義2030とは</Heading>
