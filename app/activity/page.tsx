@@ -1,6 +1,6 @@
 import path from 'path'
 import fs from 'fs'
-import { Box, Heading, Text } from '@chakra-ui/react'
+import {Box, Heading, Text} from '@chakra-ui/react'
 import Link from 'next/link'
 
 export default async function Page() {
@@ -30,10 +30,10 @@ export default async function Page() {
       <Box mb={8}>
         <Heading as="h2" size="lg" mb={4}>Slack活動記録</Heading>
         {slackFiles.length > 0 ? (
-          <ul style={{ listStyleType: 'none', padding: 0 }}>
+          <ul style={{listStyleType: 'none', padding: 0}}>
             {slackFiles.map((file) => (
-              <li key={file} style={{ marginBottom: '12px' }}>
-                <Link href={`/activity/${getSlugFromFilename(file)}`} style={{ color: '#3182ce' }}>
+              <li key={file} style={{marginBottom: '12px'}}>
+                <Link href={`/activity/${getSlugFromFilename(file)}`} style={{color: '#3182ce'}}>
                   {getDisplayName(file)}
                 </Link>
               </li>
@@ -44,15 +44,15 @@ export default async function Page() {
         )}
       </Box>
 
-      <hr style={{ margin: '24px 0' }} />
+      <hr style={{margin: '24px 0'}}/>
 
       <Box>
         <Heading as="h2" size="lg" mb={4}>GitHub活動記録</Heading>
         {githubFiles.length > 0 ? (
-          <ul style={{ listStyleType: 'none', padding: 0 }}>
+          <ul style={{listStyleType: 'none', padding: 0}}>
             {githubFiles.map((file) => (
-              <li key={file} style={{ marginBottom: '12px' }}>
-                <Link href={`/activity/${getSlugFromFilename(file)}`} style={{ color: '#3182ce' }}>
+              <li key={file} style={{marginBottom: '12px'}}>
+                <Link href={`/activity/${getSlugFromFilename(file)}`} style={{color: '#3182ce'}}>
                   {getDisplayName(file)}
                 </Link>
               </li>
