@@ -1,9 +1,24 @@
 import path from 'path'
 import fs from 'fs'
-import {marked} from 'marked'
-import {Markdown} from '@/components/Markdown'
-import {Box, Button, Flex, Image} from '@chakra-ui/react'
+import { marked } from 'marked'
+import { Markdown } from '@/components/Markdown'
+import { Box, Button, Flex, Image } from '@chakra-ui/react'
 import Link from 'next/link'
+
+export async function generateStaticParams() {
+  // markdownディレクトリのパス
+  const markdownDir = path.join(process.cwd(), 'markdown')
+
+  // ディレクトリ内のファイル一覧を取得
+  const files = fs.readdirSync(markdownDir)
+
+  // githubまたはslackで始まる.mdファイルのみを抽出し、拡張子を除去してスラッグとして使用
+  return files
+    .filter(file => file.endsWith('.md') && (file.startsWith('github') || file.startsWith('slack')))
+    .map(file => ({
+      slug: file.replace(/\.md$/, '')
+    }))
+}
 
 type PageProps = {
   params: Promise<{
@@ -11,7 +26,7 @@ type PageProps = {
   }>
 }
 
-export default async function Page({params}: PageProps) {
+export default async function Page({ params }: PageProps) {
   const slug = (await params).slug
 
   // ファイルパスを構築
@@ -26,9 +41,9 @@ export default async function Page({params}: PageProps) {
     return (
       <Box>
         <Box mb={20}>
-          <Image src={'/cover.png'} alt={'デジタル民主主義2030プロジェクト'}/>
+          <Image src={'/cover.png'} alt={'デジタル民主主義2030プロジェクト'} />
         </Box>
-        <Markdown content={content}/>
+        <Markdown content={content} />
       </Box>
     )
   }
@@ -45,7 +60,7 @@ export default async function Page({params}: PageProps) {
       {/* <Box mb={20}>
                 <Image src={'/cover.png'} alt={'デジタル民主主義2030プロジェクト'} />
             </Box> */}
-      <Markdown content={content}/>
+      <Markdown content={content} />
 
       {/* ナビゲーションリンク */}
       <Flex justifyContent="space-between" mt={8} mb={4}>
@@ -56,7 +71,7 @@ export default async function Page({params}: PageProps) {
             </Button>
           </Link>
         ) : (
-          <Box/>
+          <Box />
         )}
 
         <Link href="/activity" passHref>
@@ -72,7 +87,7 @@ export default async function Page({params}: PageProps) {
             </Button>
           </Link>
         ) : (
-          <Box/>
+          <Box />
         )}
       </Flex>
     </Box>
