@@ -11,7 +11,7 @@ export default async function Page() {
   return (
     <Box>
       <Box mb={20}>
-        <Image src={'/cover.png'} alt={'デジタル民主主義2030プロジェクト'} />
+        <Image src={'/cover.png'} alt={'デジタル民主主義2030プロジェクト'}/>
       </Box>
       <Markdown content={content}/>
     </Box>
