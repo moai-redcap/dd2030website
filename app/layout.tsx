@@ -1,10 +1,8 @@
 import { Metadata } from 'next'
 import { Header } from '@/components/Header'
 import { Footer } from '@/components/Footer'
-import { Box } from '@chakra-ui/react'
 import './global.css'
 import './content.css'
-import { Provider } from '@/components/ui/provider'
 import { BIZ_UDGothic } from 'next/font/google'
 
 export const biz_udGothic400 = BIZ_UDGothic({
@@ -30,15 +28,11 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="ja" className={`${biz_udGothic400.className}`} suppressHydrationWarning>
       <body>
-        <Provider>
-          <Box className={'container'}>
-            <Box mx={'auto'} maxW={'1000px'}>
-              <Header />
-              {children}
-            </Box>
-          </Box>
-          <Footer />
-        </Provider>
+        <Header />
+        <main>
+          <div className="max-w-7xl mx-auto px-4 py-6">{children}</div>
+        </main>
+        <Footer />
       </body>
     </html>
   )
