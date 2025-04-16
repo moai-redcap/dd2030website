@@ -22,6 +22,28 @@ export const biz_udGothic700 = BIZ_UDGothic({
 export const metadata: Metadata = {
   title: 'デジタル民主主義2030',
   description: 'デジタル民主主義2030プロジェクトポータルサイト',
+  openGraph: {
+    title: 'デジタル民主主義2030',
+    description: 'デジタル民主主義2030プロジェクトポータルサイト',
+    url: 'https://dd2030.org',
+    siteName: 'サイト名',
+    images: [
+      {
+        url: 'https://dd2030.org/ogp.png',
+        width: 1200,
+        height: 840,
+        alt: 'デジタル民主主義2030',
+      },
+    ],
+    locale: 'ja_JP',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'デジタル民主主義2030',
+    description: 'デジタル民主主義2030プロジェクトポータルサイト',
+    images: ['https://dd2030.org/ogp.png'],
+  },
 }
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
