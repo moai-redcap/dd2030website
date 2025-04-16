@@ -25,7 +25,7 @@ export default async function Page() {
         </section>
         <section>
           <h3 className="text-2xl mt-10">開発・デザイン・改善・コミュニティ運営に興味のある方</h3>
-          <section className="border rounded border-2 border-dashed p-4 mt-4">
+          <section className="rounded border-2 border-dashed p-4 mt-4">
             <h4 className="text-xl">Slackに参加する</h4>
             <p className="mt-4">参加して様子を見てみましょう。</p>
             <Link
@@ -38,7 +38,7 @@ export default async function Page() {
               <NavigateNextIcon />
             </Link>
           </section>
-          <section className="border rounded border-2 border-dashed p-4 mt-4">
+          <section className="rounded border-2 border-dashed p-4 mt-4">
             <h4 className="text-xl">Githubを覗く</h4>
             <p className="mt-4">まずはGithubの様子を覗きたい方はこちら。</p>
             <Link
