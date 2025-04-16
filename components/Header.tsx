@@ -69,16 +69,6 @@ export function Header() {
                   </div>
                 </Link>
                 <Link
-                  href="/case"
-                  className="w-full h-11 flex gap-2 flex-wrap"
-                  onClick={handleLinkClick}
-                >
-                  <div className="gradient w-1"></div>
-                  <div className="w-[calc(100%-12px)] flex items-center">
-                    <div>活用事例</div>
-                  </div>
-                </Link>{' '}
-                <Link
                   href="/kouchou-ai"
                   className="w-full h-11 flex gap-2 flex-wrap"
                   onClick={handleLinkClick}
@@ -87,7 +77,37 @@ export function Header() {
                   <div className="w-[calc(100%-12px)] flex items-center">
                     <div>広聴AI</div>
                   </div>
-                </Link>{' '}
+                </Link>
+                <Link
+                  href="/idobata"
+                  className="w-full h-11 flex gap-2 flex-wrap"
+                  onClick={handleLinkClick}
+                >
+                  <div className="gradient w-1"></div>
+                  <div className="w-[calc(100%-12px)] flex items-center">
+                    <div>いどばた</div>
+                  </div>
+                </Link>
+                <Link
+                  href="/Polimaney"
+                  className="w-full h-11 flex gap-2 flex-wrap"
+                  onClick={handleLinkClick}
+                >
+                  <div className="gradient w-1"></div>
+                  <div className="w-[calc(100%-12px)] flex items-center">
+                    <div>Polimaney</div>
+                  </div>
+                </Link>
+                <Link
+                  href="/case"
+                  className="w-full h-11 flex gap-2 flex-wrap"
+                  onClick={handleLinkClick}
+                >
+                  <div className="gradient w-1"></div>
+                  <div className="w-[calc(100%-12px)] flex items-center">
+                    <div>活用事例</div>
+                  </div>
+                </Link>
                 <Link
                   href="/activity"
                   className="w-full h-11 flex gap-2 flex-wrap"

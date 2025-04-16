@@ -60,8 +60,9 @@ export default async function Page() {
         </section>
         <div className="flex gap-4 mt-20">
           <Link
-            href="/case/idobata"
+            href="https://github.com/digitaldemocracy2030/kouchou-ai"
             className={`${buttonVariants({ variant: 'outline' })} h-11 border-black`}
+            target="_blank"
           >
             <span></span>
             <div className="flex items-center">
