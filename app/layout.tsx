@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     title: 'デジタル民主主義2030',
     description: 'デジタル民主主義2030プロジェクトポータルサイト',
     url: 'https://dd2030.org',
-    siteName: 'サイト名',
+    siteName: 'デジタル民主主義2030',
     images: [
       {
         url: 'https://dd2030.org/ogp.png',
