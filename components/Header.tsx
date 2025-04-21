@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import {
   Drawer,
   DrawerClose,
@@ -21,15 +22,31 @@ export function Header() {
   const handleLinkClick = () => {
     setOpen(false) // ページ遷移前にドロワーを閉じる
   }
+  const path = usePathname()
+  const isActivityChild = () => {
+    if (path.indexOf('/activity/') === 0 || path.indexOf('/policies/') === 0) {
+      return false
+    } else {
+      return true
+    }
+  }
   return (
     <header className="sticky top-0 z-50 w-full bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="mx-auto w-full max-w-7xl">
         <div className="flex items-center h-14 px-4">
-          <h1 className="flex-1">
-            <Link href="/" className="inline-block font-bold text-xl">
-              デジタル民主主義2030
-            </Link>
-          </h1>
+          {isActivityChild() ? (
+            <h1 className="flex-1">
+              <Link href="/" className="inline-block font-bold text-xl">
+                デジタル民主主義2030
+              </Link>
+            </h1>
+          ) : (
+            <div className="flex-1">
+              <Link href="/" className="inline-block font-bold text-xl">
+                デジタル民主主義2030
+              </Link>
+            </div>
+          )}
           <Drawer direction="right" open={open} onOpenChange={setOpen}>
             <DrawerTrigger asChild>
               <Button className="cursor-pointer w-11 h-11">
@@ -89,13 +106,13 @@ export function Header() {
                   </div>
                 </Link>
                 <Link
-                  href="/Polimaney"
+                  href="/polimoney"
                   className="w-full h-11 flex gap-2 flex-wrap"
                   onClick={handleLinkClick}
                 >
                   <div className="gradient w-1"></div>
                   <div className="w-[calc(100%-12px)] flex items-center">
-                    <div>Polimaney</div>
+                    <div>Polimoney</div>
                   </div>
                 </Link>
                 <Link

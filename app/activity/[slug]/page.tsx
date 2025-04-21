@@ -2,8 +2,10 @@ import path from 'path'
 import fs from 'fs'
 import { marked } from 'marked'
 import { Markdown } from '@/components/Markdown'
-import { Box, Button, Flex, Image } from '@chakra-ui/react'
 import Link from 'next/link'
+import { buttonVariants } from '@/components/ui/button'
+import NavigateNextIcon from '@mui/icons-material/NavigateNext'
+import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore'
 
 export async function generateStaticParams() {
   // markdownディレクトリのパス
@@ -14,9 +16,11 @@ export async function generateStaticParams() {
 
   // githubまたはslackで始まる.mdファイルのみを抽出し、拡張子を除去してスラッグとして使用
   return files
-    .filter(file => file.endsWith('.md') && (file.startsWith('github') || file.startsWith('slack')))
-    .map(file => ({
-      slug: file.replace(/\.md$/, '')
+    .filter(
+      (file) => file.endsWith('.md') && (file.startsWith('github') || file.startsWith('slack')),
+    )
+    .map((file) => ({
+      slug: file.replace(/\.md$/, ''),
     }))
 }
 
@@ -35,16 +39,11 @@ export default async function Page({ params }: PageProps) {
   // ファイルが存在するか確認
   if (!fs.existsSync(filePath)) {
     // ファイルが存在しない場合はデフォルトのabout.mdを表示
-    const defaultFilePath = path.join(process.cwd(), 'markdown', 'about.md')
-    const markdown = fs.readFileSync(defaultFilePath, 'utf-8')
-    const content = await marked(markdown)
     return (
-      <Box>
-        <Box mb={20}>
-          <Image src={'/cover.png'} alt={'デジタル民主主義2030プロジェクト'} />
-        </Box>
-        <Markdown content={content} />
-      </Box>
+      <section>
+        <p>ファイルが存在しません。</p>
+        <Link href="/">トップページへ</Link>
+      </section>
     )
   }
 
@@ -56,49 +55,54 @@ export default async function Page({ params }: PageProps) {
   const navigation = generateNavigationLinks(slug)
 
   return (
-    <Box>
-      {/* <Box mb={20}>
-                <Image src={'/cover.png'} alt={'デジタル民主主義2030プロジェクト'} />
-            </Box> */}
+    <div>
       <Markdown content={content} />
 
       {/* ナビゲーションリンク */}
-      <Flex justifyContent="space-between" mt={8} mb={4}>
+      <div className="mt-2 mb-1 flex justify-center items-center gap-4">
         {navigation.prev ? (
-          <Link href={`/activity/${navigation.prev}`} passHref>
-            <Button as="a" colorScheme="blue" variant="outline">
-              ← 前へ
-            </Button>
+          <Link
+            href={`/activity/${navigation.prev}`}
+            passHref
+            className={`${buttonVariants()} h-11`}
+          >
+            <NavigateBeforeIcon />
+            前へ
+            <span></span>
           </Link>
         ) : (
-          <Box />
+          <div></div>
         )}
 
         <Link href="/activity" passHref>
-          <Button as="a" colorScheme="blue">
-            一覧に戻る
-          </Button>
+          一覧に戻る
         </Link>
 
         {navigation.next ? (
-          <Link href={`/activity/${navigation.next}`} passHref>
-            <Button as="a" colorScheme="blue" variant="outline">
-              次へ →
-            </Button>
+          <Link
+            href={`/activity/${navigation.next}`}
+            passHref
+            className={`${buttonVariants()} h-11`}
+          >
+            <span></span>次へ
+            <NavigateNextIcon />
           </Link>
         ) : (
-          <Box />
+          <div></div>
         )}
-      </Flex>
-    </Box>
+      </div>
+    </div>
   )
 }
 
 // ナビゲーションリンクを生成する関数
-function generateNavigationLinks(currentSlug: string): { prev: string | null, next: string | null } {
+function generateNavigationLinks(currentSlug: string): {
+  prev: string | null
+  next: string | null
+} {
   const result = {
     prev: null as string | null,
-    next: null as string | null
+    next: null as string | null,
   }
 
   // markdownディレクトリのパス
