@@ -1,7 +1,8 @@
 import path from 'path'
 import fs from 'fs'
-import {Box, Heading, Text} from '@chakra-ui/react'
 import Link from 'next/link'
+import { buttonVariants } from '@/components/ui/button'
+import NavigateNextIcon from '@mui/icons-material/NavigateNext'
 
 export default async function Page() {
   // マークダウンディレクトリのパス
@@ -11,8 +12,8 @@ export default async function Page() {
   const files = fs.readdirSync(markdownDir)
 
   // slackとgithubのファイルをフィルタリング
-  const slackFiles = files.filter(file => file.startsWith('slack') && file.endsWith('.md'))
-  const githubFiles = files.filter(file => file.startsWith('github') && file.endsWith('.md'))
+  const slackFiles = files.filter((file) => file.startsWith('slack') && file.endsWith('.md'))
+  const githubFiles = files.filter((file) => file.startsWith('github') && file.endsWith('.md'))
 
   // ファイル名からスラグを取得する関数（.mdを除去）
   const getSlugFromFilename = (filename: string) => filename.replace('.md', '')
@@ -24,44 +25,50 @@ export default async function Page() {
   }
 
   return (
-    <Box p={4}>
-      <Heading as="h1" mb={6}>活動記録</Heading>
-
-      <Box mb={8}>
-        <Heading as="h2" size="lg" mb={4}>Slack活動記録</Heading>
+    <section className="mx-auto max-w-xl">
+      <h2 className="text-3xl">活動記録</h2>
+      <section>
+        <h3 className="text-2xl mt-8 mb-4">Slack活動記録</h3>
         {slackFiles.length > 0 ? (
-          <ul style={{listStyleType: 'none', padding: 0}}>
+          <ul>
             {slackFiles.map((file) => (
-              <li key={file} style={{marginBottom: '12px'}}>
-                <Link href={`/activity/${getSlugFromFilename(file)}`} style={{color: '#3182ce'}}>
+              <li key={file}>
+                <Link
+                  href={`/activity/${getSlugFromFilename(file)}`}
+                  className={`${buttonVariants({ variant: 'link' })} h-11 mt-4`}
+                >
+                  <span></span>
                   {getDisplayName(file)}
+                  <NavigateNextIcon />
                 </Link>
               </li>
             ))}
           </ul>
         ) : (
-          <Text>Slack活動記録はまだありません。</Text>
+          <p>Slack活動記録はまだありません。</p>
         )}
-      </Box>
-
-      <hr style={{margin: '24px 0'}}/>
-
-      <Box>
-        <Heading as="h2" size="lg" mb={4}>GitHub活動記録</Heading>
+      </section>
+      <section>
+        <h3 className="text-2xl mt-8 mb-4">GitHub活動記録</h3>
         {githubFiles.length > 0 ? (
-          <ul style={{listStyleType: 'none', padding: 0}}>
+          <ul style={{ listStyleType: 'none', padding: 0 }}>
             {githubFiles.map((file) => (
-              <li key={file} style={{marginBottom: '12px'}}>
-                <Link href={`/activity/${getSlugFromFilename(file)}`} style={{color: '#3182ce'}}>
+              <li key={file} style={{ marginBottom: '12px' }}>
+                <Link
+                  href={`/activity/${getSlugFromFilename(file)}`}
+                  className={`${buttonVariants({ variant: 'link' })} h-11 mt-4`}
+                >
+                  <span></span>
                   {getDisplayName(file)}
+                  <NavigateNextIcon />
                 </Link>
               </li>
             ))}
           </ul>
         ) : (
-          <Text>GitHub活動記録はまだありません。</Text>
+          <p>GitHub活動記録はまだありません。</p>
         )}
-      </Box>
-    </Box>
+      </section>
+    </section>
   )
 }
