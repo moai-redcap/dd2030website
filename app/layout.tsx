@@ -3,7 +3,7 @@ import { Header } from '@/components/Header'
 import { Footer } from '@/components/Footer'
 import './global.css'
 import './content.css'
-import { BIZ_UDGothic } from 'next/font/google'
+import { BIZ_UDGothic, Inter } from 'next/font/google'
 
 export const biz_udGothic400 = BIZ_UDGothic({
   subsets: ['latin'],
@@ -16,6 +16,13 @@ export const biz_udGothic700 = BIZ_UDGothic({
   subsets: ['latin'],
   weight: '700',
   variable: '--font-biz-udgothic700',
+  display: 'swap',
+})
+
+export const inter = Inter({
+  subsets: ['latin'],
+  weight: ['400', '700'],
+  variable: '--font-inter',
   display: 'swap',
 })
 
@@ -102,7 +109,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     },
   ]
   return (
-    <html lang="ja" className={`${biz_udGothic400.className}`} suppressHydrationWarning>
+    <html lang="ja" className={`${biz_udGothic400.variable} ${inter.variable}`} suppressHydrationWarning>
       <body>
         {/* JSON-LD構造化データを埋め込み */}
         <script

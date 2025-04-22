@@ -118,6 +118,14 @@
   body {
     @apply bg-background text-foreground;
   }
+  
+  :lang(ja) {
+    font-family: var(--font-biz-udgothic400), sans-serif;
+  }
+  
+  :not(:lang(ja)) {
+    font-family: var(--font-inter), sans-serif;
+  }
 }
 img,
 svg,
