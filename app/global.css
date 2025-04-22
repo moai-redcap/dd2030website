@@ -117,6 +117,7 @@
   }
   body {
     @apply bg-background text-foreground;
+    font-family: var(--font-inter), var(--font-biz-udgothic400), sans-serif;
   }
 }
 img,
