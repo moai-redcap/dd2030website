@@ -36,6 +36,18 @@ export default async function Page() {
           quality={100}
         />
         <section>
+          <h3 className="text-2xl mt-10">歴史</h3>
+          <p className="mt-4">
+            広聴AIの起源は2023年の「Talk to the City」にさかのぼります。これは米国AI Objective InstituteのChristopher Hsuehらによって開発されたオープンソースのAIブロードリスニングツールです。
+          </p>
+          <p className="mt-4">
+            日本では、2023年夏の都知事選において西尾泰和氏がTalk to the Cityを活用し、X（旧Twitter）上の都知事選に関する発言を集約・可視化する試みが行われました。同年12月には、日本テレビの衆院選報道でAIによる意見分析が実施され、2024年2月には「シン東京2050」プロジェクトでも使用されました。
+          </p>
+          <p className="mt-4">
+            これらの経験から、「ノンエンジニアがCSVをアップロードするだけで使える仕組みが必要」という課題が明確になり、Talk to the Cityを基にして、日本の自治体や政治家の実務に合わせた機能改善を施した「広聴AI」が開発されました。2025年3月16日、デジタル民主主義2030プロジェクトによって広聴AIがオープンソースで公開されました。
+          </p>
+        </section>
+        <section>
           <h3 className="text-2xl mt-10">活用事例</h3>
           <h4 className="text-xl mt-8">選挙報道</h4>
           <p className="mt-4">
