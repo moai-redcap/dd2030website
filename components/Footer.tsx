@@ -22,7 +22,7 @@ export function Footer() {
             target="_blank"
           >
             <span></span>
-            Github
+            GitHub
           </Link>
         </div>
         <div>
