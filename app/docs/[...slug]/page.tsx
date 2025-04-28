@@ -1,7 +1,8 @@
+'use client'
+import * as React from 'react'
 import { notFound } from 'next/navigation'
 import { MDXRemote } from 'next-mdx-remote/rsc' // RSC 用のコンポーネント
 import { getDocPath, getDocContent, getDocTree, DocNavItem } from '@/lib/docs'
-import { Metadata } from 'next'
 // rehype-pretty-code の設定（オプション）
 import rehypePrettyCode from 'rehype-pretty-code'
 import type { Options as RehypePrettyCodeOptions } from 'rehype-pretty-code'
@@ -42,13 +43,13 @@ interface DocPageProps {
 }
 
 // メタデータを生成する関数
-export async function generateMetadata({ params }: DocPageProps): Promise<Metadata> {
+export function useGenerateMetadata({ params }: DocPageProps) {
   const filePath = getDocPath(params.slug)
   if (!filePath) {
     return { title: 'Not Found' }
   }
   try {
-    const { frontmatter } = await getDocContent(filePath)
+    const { frontmatter } = React.use(getDocContent(filePath))
     return {
       // title など、frontmatter のプロパティがない場合に備える
       title: frontmatter?.title ?? 'Docs',
@@ -61,8 +62,8 @@ export async function generateMetadata({ params }: DocPageProps): Promise<Metada
 }
 
 // 静的パスを生成する関数 (ビルド時にページを事前生成)
-export async function generateStaticParams(): Promise<DocPageProps['params'][]> {
-  const tree = await getDocTree() // ナビゲーションツリーを取得
+export function useGenerateStaticParams() {
+  const tree = getDocTree() // ナビゲーションツリーを取得
 
   function extractSlugs(items: DocNavItem[]): string[][] {
     let slugs: string[][] = []
@@ -81,14 +82,14 @@ export async function generateStaticParams(): Promise<DocPageProps['params'][]> 
     return slugs
   }
 
-  const allSlugs = extractSlugs(tree)
+  const allSlugs = extractSlugs(React.use(tree))
   // console.log('Generated slugs:', allSlugs); // デバッグ用
 
   return allSlugs.map((slug) => ({ slug }))
 }
 
 // ページコンポーネント
-export default async function DocPage({ params }: DocPageProps) {
+export default function DocPage({ params }: DocPageProps) {
   const filePath = getDocPath(params.slug)
 
   if (!filePath) {
@@ -96,29 +97,29 @@ export default async function DocPage({ params }: DocPageProps) {
     notFound() // ファイルが見つからない場合は 404
   }
 
-  try {
-    const { content } = await getDocContent(filePath)
+  // try {
+  const { content } = React.use(getDocContent(filePath))
 
-    return (
-      <article className="prose prose-slate dark:prose-invert max-w-none">
-        {/* Markdownコンテンツのレンダリング */}
-        <MDXRemote
-          source={content}
-          options={{
-            mdxOptions: {
-              remarkPlugins: [],
-              rehypePlugins: [
-                [rehypePrettyCode, prettyCodeOptions], // コードハイライトを適用
-              ],
-            },
-          }}
-          // ここでカスタムコンポーネントを渡すことも可能
-          // components={{ Button: YourCustomButton }}
-        />
-      </article>
-    )
-  } catch (error) {
-    console.error(`Error processing doc file: ${filePath}`, error)
-    notFound() // 処理中にエラーが発生した場合も 404
-  }
+  return (
+    <article className="prose prose-slate dark:prose-invert max-w-none">
+      {/* Markdownコンテンツのレンダリング */}
+      <MDXRemote
+        source={content}
+        options={{
+          mdxOptions: {
+            remarkPlugins: [],
+            rehypePlugins: [
+              [rehypePrettyCode, prettyCodeOptions], // コードハイライトを適用
+            ],
+          },
+        }}
+        // ここでカスタムコンポーネントを渡すことも可能
+        // components={{ Button: YourCustomButton }}
+      />
+    </article>
+  )
+  // } catch (error) {
+  //   console.error(`Error processing doc file: ${filePath}`, error)
+  //   notFound() // 処理中にエラーが発生した場合も 404
+  // }
 }

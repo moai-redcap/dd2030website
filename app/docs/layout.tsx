@@ -1,6 +1,6 @@
 import React from 'react'
 import { SidebarProvider } from '@/components/ui/sidebar'
-import { DocsSidebarNav } from '@/components/docs-sidebar-nav'
+import { DocsSidebarNav } from '@/components/DocsSidebarNav'
 import { getDocTree } from '@/lib/docs'
 import { SidebarToggleButton } from '@/components/SidebarToggleButton'
 
