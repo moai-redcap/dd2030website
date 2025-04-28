@@ -1,4 +1,3 @@
-// ./lib/docs.ts
 import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
@@ -9,16 +8,20 @@ export interface DocNavItem {
   title: string
   href: string
   items?: DocNavItem[] // 子要素
+  isIndex?: boolean
 }
 
 // ディレクトリを再帰的に探索し、ナビゲーションツリーを構築する関数
 async function readDirectory(dir: string, relativePath: string = ''): Promise<DocNavItem[]> {
   const entries = await fs.promises.readdir(dir, { withFileTypes: true })
   const items: DocNavItem[] = []
-
   for (const entry of entries) {
     const fullPath = path.join(dir, entry.name)
     const currentRelativePath = path.join(relativePath, entry.name).replace(/\\/g, '/') // Windows パス区切り文字対応
+    const sectionTitle = entry.name
+      .split('-')
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(' ')
 
     if (entry.isDirectory()) {
       // ディレクトリの場合、再帰的に探索
@@ -28,10 +31,10 @@ async function readDirectory(dir: string, relativePath: string = ''): Promise<Do
         (item) =>
           item.href === `/docs${currentRelativePath === '' ? '' : '/' + currentRelativePath}`,
       )
-      const title = indexFile ? indexFile.title : entry.name // indexがあればそのタイトル、なければディレクトリ名
+      const title = indexFile ? indexFile.title : sectionTitle // indexがあればそのタイトル、なければディレクトリ名
 
       items.push({
-        title: title, // ディレクトリ名をタイトルとする（後で改善可能）
+        title: title,
         href: `/docs${currentRelativePath === '' ? '' : '/' + currentRelativePath}`, // ディレクトリへのリンク（暫定）
         items: children.filter((item) => item !== indexFile), // index ファイル以外を子要素に
       })
@@ -57,7 +60,7 @@ async function readDirectory(dir: string, relativePath: string = ''): Promise<Do
         items.push({
           title: data.title || 'Overview', // Front Matter の title を優先
           href: href,
-          // isIndex: true, // 目印をつけても良い
+          isIndex: true, // 目印をつけても良い
         })
       }
     }

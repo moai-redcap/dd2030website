@@ -109,7 +109,11 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     },
   ]
   return (
-    <html lang="ja" className={`${biz_udGothic400.variable} ${inter.variable}`} suppressHydrationWarning>
+    <html
+      lang="ja"
+      className={`${biz_udGothic400.variable} ${inter.variable}`}
+      suppressHydrationWarning
+    >
       <body>
         {/* JSON-LD構造化データを埋め込み */}
         <script

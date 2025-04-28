@@ -23,8 +23,12 @@ export function Header() {
     setOpen(false) // ページ遷移前にドロワーを閉じる
   }
   const path = usePathname()
-  const isActivityChild = () => {
-    if (path.indexOf('/activity/') === 0 || path.indexOf('/policies/') === 0) {
+  const isNotH1 = () => {
+    if (
+      path.indexOf('/activity/') === 0 ||
+      path.indexOf('/policies/') === 0 ||
+      path.indexOf('/docs/') === 0
+    ) {
       return false
     } else {
       return true
@@ -34,7 +38,7 @@ export function Header() {
     <header className="sticky top-0 z-50 w-full bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="mx-auto w-full max-w-7xl">
         <div className="flex items-center h-14 px-4">
-          {isActivityChild() ? (
+          {isNotH1() ? (
             <h1 className="flex-1">
               <Link href="/" className="inline-block font-bold text-xl">
                 デジタル民主主義2030

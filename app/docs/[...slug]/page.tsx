@@ -1,4 +1,3 @@
-// ./app/docs/[...slug]/page.tsx
 import { notFound } from 'next/navigation'
 import { MDXRemote } from 'next-mdx-remote/rsc' // RSC 用のコンポーネント
 import { getDocPath, getDocContent, getDocTree, DocNavItem } from '@/lib/docs'
@@ -38,7 +37,7 @@ const prettyCodeOptions: RehypePrettyCodeOptions = {
 
 interface DocPageProps {
   params: {
-    slug?: string[]
+    slug: string[]
   }
 }
 
@@ -98,19 +97,10 @@ export default async function DocPage({ params }: DocPageProps) {
   }
 
   try {
-    const { frontmatter, content } = await getDocContent(filePath)
+    const { content } = await getDocContent(filePath)
 
     return (
       <article className="prose prose-slate dark:prose-invert max-w-none">
-        {' '}
-        {/* スタイル適用 */}
-        {/* ページタイトル */}
-        <h1>{frontmatter.title}</h1>
-        {/* ページ説明 */}
-        {frontmatter.description && (
-          <p className="text-lg text-muted-foreground">{frontmatter.description}</p>
-        )}
-        <hr className="my-4" />
         {/* Markdownコンテンツのレンダリング */}
         <MDXRemote
           source={content}

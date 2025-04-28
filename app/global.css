@@ -1,5 +1,7 @@
 @import 'tailwindcss';
 @import 'tw-animate-css';
+@plugin "@tailwindcss/typography";
+@import 'github-markdown-css/github-markdown-light.css';
 
 @custom-variant dark (&:is(.dark *));
 
@@ -133,4 +135,11 @@ object {
 .gradient {
   background: hsla(259, 83%, 84%, 1);
   background: linear-gradient(135deg, hsla(259, 83%, 84%, 1) 25%, hsla(169, 80%, 73%, 1) 100%);
+}
+.markdown-body ul {
+  list-style: revert;
+}
+
+.markdown-body ol {
+  list-style: initial;
 }

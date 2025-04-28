@@ -1,5 +1,4 @@
-// ./components/docs-sidebar-nav.tsx
-'use client' // クライアントコンポーネントにする
+'use client'
 import { buttonVariants } from '@/components/ui/button'
 import { usePathname } from 'next/navigation'
 import {
@@ -14,8 +13,8 @@ import {
   SidebarMenuSubItem,
   SidebarMenuSubButton,
 } from '@/components/ui/sidebar'
-import { DocNavItem } from '@/lib/docs' // 先ほど定義した型
-import { cn } from '@/lib/utils' // shadcn/ui のユーティリティ関数 (なければ作成 or 削除)
+import { DocNavItem } from '@/lib/docs'
+import { cn } from '@/lib/utils'
 
 interface DocsSidebarNavProps {
   items: DocNavItem[]
@@ -29,32 +28,38 @@ export function DocsSidebarNav({ items }: DocsSidebarNavProps) {
   }
 
   return (
-    <Sidebar>
-      <SidebarContent>
+    <Sidebar className="sticky top-14">
+      <SidebarContent className="bg-white">
         <SidebarGroup>
           <SidebarGroupContent>
             <SidebarMenu>
-              {items.map((item, index) => (
-                <SidebarMenuItem key={index} className={cn('pb-4')}>
-                  {item.items ? (
-                    <div>{item.title}</div>
-                  ) : (
-                    <SidebarMenuButton asChild>
-                      <a
-                        href={item.href}
-                        target={item.href.startsWith('http') ? '_blank' : ''}
-                        rel={item.href.startsWith('http') ? 'noreferrer' : ''}
-                        className="h-auto"
-                      >
-                        {item.title}
-                      </a>
-                    </SidebarMenuButton>
-                  )}
-                  {item.items?.length && (
-                    <DocsSidebarNavItems items={item.items} pathname={pathname} />
-                  )}
-                </SidebarMenuItem>
-              ))}
+              {items.map((item, index) => {
+                if (item.isIndex) {
+                  return null
+                } else {
+                  return (
+                    <SidebarMenuItem key={index} className={cn('pb-4')}>
+                      {item.items ? (
+                        <div className="font-bold py-1">{item.title}</div>
+                      ) : (
+                        <SidebarMenuButton asChild>
+                          <a
+                            href={item.href}
+                            target={item.href.startsWith('http') ? '_blank' : ''}
+                            rel={item.href.startsWith('http') ? 'noreferrer' : ''}
+                            className="h-auto"
+                          >
+                            {item.title}
+                          </a>
+                        </SidebarMenuButton>
+                      )}
+                      {item.items?.length && (
+                        <DocsSidebarNavItems items={item.items} pathname={pathname} />
+                      )}
+                    </SidebarMenuItem>
+                  )
+                }
+              })}
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>
@@ -78,7 +83,7 @@ export function DocsSidebarNavItems({ items, pathname }: DocsSidebarNavItemsProp
               href={item.href}
               className={`${buttonVariants({ variant: 'ghost' })} ${cn(
                 'whitespace-normal justify-start w-full h-auto',
-                pathname === item.href ? 'font-medium text-foreground' : 'text-muted-foreground',
+                pathname === item.href ? 'text-foreground bg-accent' : 'text-muted-foreground',
               )}`}
               target={item.href.startsWith('http') ? '_blank' : ''}
               rel={item.href.startsWith('http') ? 'noreferrer' : ''}
@@ -89,7 +94,7 @@ export function DocsSidebarNavItems({ items, pathname }: DocsSidebarNavItemsProp
         ) : (
           // 子ディレクトリがある場合、さらにネストして表示（必要ならスタイル調整）
           <div key={item.href} className="ml-4">
-            <h5 className="mb-1 rounded-md px-2 py-1 text-sm font-semibold">{item.title}</h5>
+            <div className="mb-1 rounded-md px-2 py-1 text-sm font-semibold">{item.title}</div>
             <DocsSidebarNavItems items={item.items} pathname={pathname} />
           </div>
         ),
@@ -97,11 +102,3 @@ export function DocsSidebarNavItems({ items, pathname }: DocsSidebarNavItemsProp
     </SidebarMenuSub>
   ) : null
 }
-
-// cn関数 (shadcn/uiを使わない場合は clsx や classnames を使うか、単純な文字列結合でもOK)
-// lib/utils.ts などに配置
-// import { type ClassValue, clsx } from "clsx"
-// import { twMerge } from "tailwind-merge"
-// export function cn(...inputs: ClassValue[]) {
-//  return twMerge(clsx(inputs))
-// }
