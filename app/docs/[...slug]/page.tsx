@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation'
 import { MDXRemote } from 'next-mdx-remote/rsc' // RSC 用のコンポーネント
-import { getDocPath, getDocContent, getDocTree, DocNavItem } from '@/lib/docs'
+import { getDocPathAsync, getDocContent, getDocTree, DocNavItem } from '@/lib/docs'
 import { Metadata } from 'next'
 // rehype-pretty-code の設定（オプション）
 import rehypePrettyCode from 'rehype-pretty-code'
@@ -37,14 +37,14 @@ const prettyCodeOptions: RehypePrettyCodeOptions = {
 
 interface DocPageProps {
   params: {
-    slug: string[]
+    slug?: string[]
   }
 }
 
 // メタデータを生成する関数
 export async function generateMetadata({ params }: DocPageProps): Promise<Metadata> {
-  const filePath = getDocPath(params.slug)
-  if (!filePath) {
+  const filePath = await getDocPathAsync(params.slug)
+  if (filePath === null) {
     return { title: 'Not Found' }
   }
   try {
@@ -78,7 +78,10 @@ export async function generateStaticParams(): Promise<DocPageProps['params'][]> 
         slugs = slugs.concat(extractSlugs(item.items))
       }
     })
-    return slugs
+    // 重複を除去 (例: ディレクトリ '/docs/folder' とそのインデックス '/docs/folder' がある場合)
+    const uniqueSlugsMap = new Map<string, string[]>()
+    slugs.forEach((slug) => uniqueSlugsMap.set(slug.join('/'), slug))
+    return Array.from(uniqueSlugsMap.values())
   }
 
   const allSlugs = extractSlugs(tree)
@@ -89,9 +92,9 @@ export async function generateStaticParams(): Promise<DocPageProps['params'][]> 
 
 // ページコンポーネント
 export default async function DocPage({ params }: DocPageProps) {
-  const filePath = getDocPath(params.slug)
+  const filePath = await getDocPathAsync(params.slug)
 
-  if (!filePath) {
+  if (filePath === null) {
     console.error(`Doc file not found for slug: ${params.slug?.join('/') ?? 'index'}`)
     notFound() // ファイルが見つからない場合は 404
   }
