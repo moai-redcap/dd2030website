@@ -103,7 +103,7 @@ export default async function DocPage({ params }: DocPageProps) {
     const { content } = await getDocContent(filePath)
 
     return (
-      <article className="prose prose-slate dark:prose-invert max-w-none">
+      <article className="markdown-body max-w-none">
         {/* Markdownコンテンツのレンダリング */}
         <MDXRemote
           source={content}
