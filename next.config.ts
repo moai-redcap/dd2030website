@@ -11,11 +11,7 @@ const nextConfig: NextConfig = {
     optimizePackageImports: ['@chakra-ui/react'],
   },
   output: 'export',
-  trailingSlash: true,
   distDir: 'out',
-  images: {
-    unoptimized: true,
-  },
   skipTrailingSlashRedirect: true,
   skipMiddlewareUrlNormalize: true,
 }
