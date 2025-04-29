@@ -88,7 +88,12 @@ export async function generateStaticParams(): Promise<DocPageProps['params'][]> 
   const allSlugs = extractSlugs(tree)
   // console.log('Generated slugs:', allSlugs); // デバッグ用
 
-  return allSlugs.map((slug) => Promise.resolve({ slug }))
+  // Return an array of promises with the correct format for Next.js static export
+  return allSlugs.map((slug) =>
+    Promise.resolve({
+      slug,
+    }),
+  )
 }
 
 // ページコンポーネント
@@ -97,7 +102,8 @@ export default async function DocPage({ params }: DocPageProps) {
   const filePath = await getDocPathAsync(slug)
 
   if (filePath === null) {
-    console.error(`Doc file not found for slug: ${slug?.join('/') ?? 'index'}`)
+    const resolvedParams = await params
+    console.error(`Doc file not found for slug: ${resolvedParams.slug?.join('/') ?? 'index'}`)
     notFound() // ファイルが見つからない場合は 404
   }
 
