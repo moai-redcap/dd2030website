@@ -36,9 +36,9 @@ const prettyCodeOptions: RehypePrettyCodeOptions = {
 }
 
 interface DocPageProps {
-  params: {
+  params: Promise<{
     slug?: string[]
-  }
+  }>
 }
 
 // メタデータを生成する関数
