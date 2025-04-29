@@ -54,7 +54,8 @@ jobs:
         run: |
           # Remove any cached files that might be causing issues
           rm -rf .next out
-          ${{ steps.detect-package-manager.outputs.runner }} next build
+          # Use explicit export command
+          ${{ steps.detect-package-manager.outputs.runner }} next build && ${{ steps.detect-package-manager.outputs.runner }} next export
       
       # PRごとのサブディレクトリにデプロイ
       - name: Deploy PR Preview
