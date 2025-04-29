@@ -83,7 +83,7 @@ export function DocsSidebarNavItems({ items, pathname }: DocsSidebarNavItemsProp
               href={item.href}
               className={`${buttonVariants({ variant: 'ghost' })} ${cn(
                 'whitespace-normal justify-start w-full h-auto',
-                pathname === item.href ? 'text-foreground bg-accent' : 'text-muted-foreground',
+                (pathname === item.href || pathname === `${item.href}/`) ? 'text-foreground bg-accent' : 'text-muted-foreground',
               )}`}
               target={item.href.startsWith('http') ? '_blank' : ''}
               rel={item.href.startsWith('http') ? 'noreferrer' : ''}
