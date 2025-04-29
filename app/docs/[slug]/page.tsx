@@ -89,6 +89,7 @@ export async function generateStaticParams(): Promise<{ slug: string }[]> {
   const allSlugs = extractSlugs(tree)
   // console.log('Generated slugs:', allSlugs); // デバッグ用
 
+  // Return an array with the correct format for Next.js static export
   return [
     { slug: 'getting-started/introduction' },
     ...allSlugs.map((slug) => ({ slug }))
