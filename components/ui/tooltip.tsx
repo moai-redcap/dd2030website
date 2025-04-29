@@ -12,7 +12,7 @@ const Tooltip = ({ ...props }: React.ComponentPropsWithoutRef<typeof TooltipPrim
     <TooltipPrimitive.Root data-slot="tooltip" {...props} />
   </TooltipProvider>
 )
-Tooltip.displayName = "Tooltip"
+Tooltip.displayName = 'Tooltip'
 
 const TooltipTrigger = React.forwardRef<
   React.ElementRef<typeof TooltipPrimitive.Trigger>,
@@ -24,7 +24,7 @@ const TooltipTrigger = React.forwardRef<
     {...props}
   />
 ))
-TooltipTrigger.displayName = "TooltipTrigger"
+TooltipTrigger.displayName = 'TooltipTrigger'
 
 const TooltipContent = React.forwardRef<
   React.ElementRef<typeof TooltipPrimitive.Content>,
@@ -46,6 +46,6 @@ const TooltipContent = React.forwardRef<
     </TooltipPrimitive.Content>
   </TooltipPrimitive.Portal>
 ))
-TooltipContent.displayName = "TooltipContent"
+TooltipContent.displayName = 'TooltipContent'
 
 export { Tooltip, TooltipTrigger, TooltipContent, TooltipProvider }

@@ -28,7 +28,7 @@ const SheetOverlay = React.forwardRef<
     {...props}
   />
 ))
-SheetOverlay.displayName = "SheetOverlay"
+SheetOverlay.displayName = 'SheetOverlay'
 
 interface SheetContentProps extends React.ComponentPropsWithoutRef<typeof SheetPrimitive.Content> {
   side?: 'top' | 'right' | 'bottom' | 'left'
@@ -65,7 +65,7 @@ const SheetContent = React.forwardRef<
     </SheetPrimitive.Content>
   </SheetPortal>
 ))
-SheetContent.displayName = "SheetContent"
+SheetContent.displayName = 'SheetContent'
 
 const SheetHeader = React.forwardRef<
   HTMLDivElement,
@@ -78,7 +78,7 @@ const SheetHeader = React.forwardRef<
     {...props}
   />
 ))
-SheetHeader.displayName = "SheetHeader"
+SheetHeader.displayName = 'SheetHeader'
 
 const SheetFooter = React.forwardRef<
   HTMLDivElement,
@@ -91,7 +91,7 @@ const SheetFooter = React.forwardRef<
     {...props}
   />
 ))
-SheetFooter.displayName = "SheetFooter"
+SheetFooter.displayName = 'SheetFooter'
 
 const SheetTitle = React.forwardRef<
   React.ElementRef<typeof SheetPrimitive.Title>,
@@ -104,7 +104,7 @@ const SheetTitle = React.forwardRef<
     {...props}
   />
 ))
-SheetTitle.displayName = "SheetTitle"
+SheetTitle.displayName = 'SheetTitle'
 
 const SheetDescription = React.forwardRef<
   React.ElementRef<typeof SheetPrimitive.Description>,
@@ -117,7 +117,7 @@ const SheetDescription = React.forwardRef<
     {...props}
   />
 ))
-SheetDescription.displayName = "SheetDescription"
+SheetDescription.displayName = 'SheetDescription'
 
 export {
   Sheet,

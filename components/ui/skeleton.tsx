@@ -12,6 +12,6 @@ const Skeleton = React.forwardRef<
     {...props}
   />
 ))
-Skeleton.displayName = "Skeleton"
+Skeleton.displayName = 'Skeleton'
 
 export { Skeleton }
