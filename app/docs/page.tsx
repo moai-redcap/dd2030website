@@ -9,14 +9,21 @@ export const metadata: Metadata = {
 
 export default function DocsRootPage() {
   return (
-    <div>
-      <meta httpEquiv="refresh" content="0;url=/docs/getting-started/introduction" />
-      <p>Redirecting to documentation...</p>
-      <p><Link href="/docs/getting-started/introduction">Click here if you are not redirected automatically</Link></p>
+    <div className="p-8 text-center">
+      <h1 className="text-2xl font-bold mb-4">Documentation</h1>
+      <p className="mb-4">Please visit our documentation sections:</p>
+      <div className="flex justify-center">
+        <Link 
+          href="/docs/getting-started/introduction"
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+        >
+          Getting Started
+        </Link>
+      </div>
     </div>
   )
 }
 
-export function generateStaticParams() {
-  return []
+export async function generateStaticParams() {
+  return [{}]
 }
