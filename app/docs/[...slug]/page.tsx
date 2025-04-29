@@ -88,12 +88,10 @@ export async function generateStaticParams(): Promise<DocPageProps['params'][]> 
   const allSlugs = extractSlugs(tree)
   // console.log('Generated slugs:', allSlugs); // デバッグ用
 
-  // Return an array of promises with the correct format for Next.js static export
-  return allSlugs.map((slug) =>
-    Promise.resolve({
-      slug,
-    }),
-  )
+  // Return an array of objects with the correct format for Next.js static export
+  return allSlugs.map((slug) => ({
+    slug,
+  }))
 }
 
 // ページコンポーネント
