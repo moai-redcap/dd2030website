@@ -68,11 +68,12 @@ jobs:
       
       # PRごとのサブディレクトリにデプロイ
       - name: Deploy PR Preview
-        uses: rossjrw/pr-preview-action@v1
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
-          source-dir: ./out
-          preview-branch: gh-pages
-          umbrella-dir: pr-preview
+          folder: ./out
+          target-folder: pr-preview/pr-${{ github.event.pull_request.number }}
+          branch: gh-pages
+          clean: true
       
       # PRにプレビューURLをコメント
       - name: Comment PR
