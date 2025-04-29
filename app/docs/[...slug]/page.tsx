@@ -43,7 +43,8 @@ interface DocPageProps {
 
 // メタデータを生成する関数
 export async function generateMetadata({ params }: DocPageProps): Promise<Metadata> {
-  const filePath = await getDocPathAsync(params.slug)
+  const { slug } = await params
+  const filePath = await getDocPathAsync(slug)
   if (filePath === null) {
     return { title: 'Not Found' }
   }
@@ -92,7 +93,8 @@ export async function generateStaticParams(): Promise<DocPageProps['params'][]> 
 
 // ページコンポーネント
 export default async function DocPage({ params }: DocPageProps) {
-  const filePath = await getDocPathAsync(params.slug)
+  const { slug } = await params
+  const filePath = await getDocPathAsync(slug)
 
   if (filePath === null) {
     console.error(`Doc file not found for slug: ${params.slug?.join('/') ?? 'index'}`)
