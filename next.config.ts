@@ -6,15 +6,6 @@ const nextConfig: NextConfig = {
   },
   output: 'export',
   trailingSlash: true,
-  exportPathMap: async function (
-    defaultPathMap,
-    { dev, dir, outDir, distDir, buildId }
-  ) {
-    return {
-      ...defaultPathMap,
-      '/docs': { page: '/docs/[...slug]', query: { slug: [] } },
-    }
-  },
 }
 
 export default nextConfig
