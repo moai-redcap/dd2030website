@@ -1,6 +1,7 @@
 import type { NextConfig } from 'next'
 
 const nextConfig: NextConfig = {
+  output: 'export',
   // Enable static image imports for Next.js Image component
   images: {
     unoptimized: true,
