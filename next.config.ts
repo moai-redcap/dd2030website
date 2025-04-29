@@ -5,6 +5,7 @@ const nextConfig: NextConfig = {
     optimizePackageImports: ['@chakra-ui/react'],
   },
   output: 'export',
+  trailingSlash: true,
 }
 
 export default nextConfig

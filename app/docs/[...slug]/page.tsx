@@ -36,9 +36,9 @@ const prettyCodeOptions: RehypePrettyCodeOptions = {
 }
 
 interface DocPageProps {
-  params: {
+  params: Promise<{
     slug?: string[]
-  }
+  }>
 }
 
 // メタデータを生成する関数
@@ -62,7 +62,7 @@ export async function generateMetadata({ params }: DocPageProps): Promise<Metada
 }
 
 // 静的パスを生成する関数 (ビルド時にページを事前生成)
-export async function generateStaticParams(): Promise<DocPageProps['params'][]> {
+export async function generateStaticParams(): Promise<{ slug?: string[] }[]> {
   const tree = await getDocTree() // ナビゲーションツリーを取得
 
   function extractSlugs(items: DocNavItem[]): string[][] {
@@ -97,7 +97,7 @@ export default async function DocPage({ params }: DocPageProps) {
   const filePath = await getDocPathAsync(slug)
 
   if (filePath === null) {
-    console.error(`Doc file not found for slug: ${params.slug?.join('/') ?? 'index'}`)
+    console.error(`Doc file not found for slug: ${slug?.join('/') ?? 'index'}`)
     notFound() // ファイルが見つからない場合は 404
   }
 
