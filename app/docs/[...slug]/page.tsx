@@ -88,7 +88,10 @@ export async function generateStaticParams(): Promise<{ slug?: string[] }[]> {
   const allSlugs = extractSlugs(tree)
   // console.log('Generated slugs:', allSlugs); // デバッグ用
 
-  return allSlugs.map((slug) => ({ slug }))
+  return [
+    { slug: ['getting-started', 'introduction'] }, // Explicitly add the introduction page as fallback for /docs
+    ...allSlugs.map((slug) => ({ slug }))
+  ]
 }
 
 // ページコンポーネント
