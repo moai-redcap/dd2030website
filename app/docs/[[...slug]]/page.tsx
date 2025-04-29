@@ -1,4 +1,4 @@
-import { notFound } from 'next/navigation'
+import { notFound, redirect } from 'next/navigation'
 import { MDXRemote } from 'next-mdx-remote/rsc' // RSC 用のコンポーネント
 import { getDocPathAsync, getDocContent, getDocTree, DocNavItem } from '@/lib/docs'
 import { Metadata } from 'next'
@@ -62,7 +62,7 @@ export async function generateMetadata({ params }: DocPageProps): Promise<Metada
 }
 
 // 静的パスを生成する関数 (ビルド時にページを事前生成)
-export async function generateStaticParams(): Promise<DocPageProps['params'][]> {
+export async function generateStaticParams(): Promise<{ slug: string[] }[]> {
   const tree = await getDocTree() // ナビゲーションツリーを取得
 
   function extractSlugs(items: DocNavItem[]): string[][] {
@@ -86,19 +86,24 @@ export async function generateStaticParams(): Promise<DocPageProps['params'][]> 
   }
 
   const allSlugs = extractSlugs(tree)
-  // console.log('Generated slugs:', allSlugs); // デバッグ用
-
-  // Return an array of promises with the correct format for Next.js static export
-  return allSlugs.map((slug) =>
-    Promise.resolve({
-      slug,
-    }),
-  )
+  
+  const result = allSlugs.map((slug) => ({
+    slug,
+  }))
+  
+  result.push({ slug: ['getting-started', 'introduction'] })
+  
+  return result
 }
 
 // ページコンポーネント
 export default async function DocPage({ params }: DocPageProps) {
   const { slug } = await params
+  
+  if (!slug || slug.length === 0) {
+    return redirect('/docs/getting-started/introduction')
+  }
+  
   const filePath = await getDocPathAsync(slug)
 
   if (filePath === null) {
