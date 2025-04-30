@@ -37,14 +37,15 @@ const prettyCodeOptions: RehypePrettyCodeOptions = {
 
 interface DocPageProps {
   params: Promise<{
-    slug?: string[]
+    slug?: string
   }>
 }
 
 // メタデータを生成する関数
 export async function generateMetadata({ params }: DocPageProps): Promise<Metadata> {
   const { slug } = await params
-  const filePath = await getDocPathAsync(slug)
+  const slugArray = slug ? slug.split('/') : []
+  const filePath = await getDocPathAsync(slugArray)
   if (filePath === null) {
     return { title: 'Not Found' }
   }
@@ -62,30 +63,37 @@ export async function generateMetadata({ params }: DocPageProps): Promise<Metada
 }
 
 // 静的パスを生成する関数 (ビルド時にページを事前生成)
+<<<<<<<< HEAD:app/docs/[[...slug]]/page.tsx
 export async function generateStaticParams(): Promise<{ slug: string[] }[]> {
+|||||||| e6aba2c:app/docs/[...slug]/page.tsx
+export async function generateStaticParams(): Promise<DocPageProps['params'][]> {
+========
+export async function generateStaticParams(): Promise<{ slug: string }[]> {
+>>>>>>>> devin/1745903142-pr-preview-deployment:app/docs/[slug]/page.tsx
   const tree = await getDocTree() // ナビゲーションツリーを取得
 
-  function extractSlugs(items: DocNavItem[]): string[][] {
-    let slugs: string[][] = []
+  function extractSlugs(items: DocNavItem[]): string[] {
+    let slugs: string[] = []
     items.forEach((item) => {
       if (item.href) {
         const slugParts = item.href
           .split('/')
           .filter((part: string) => part !== '' && part !== 'docs')
-        // href が '/docs' の場合は空の配列 (トップページ)
-        slugs.push(slugParts.length === 0 ? [] : slugParts)
+        
+        const slug = slugParts.join('/')
+        if (slug) {
+          slugs.push(slug)
+        }
       }
       if (item.items) {
         slugs = slugs.concat(extractSlugs(item.items))
       }
     })
-    // 重複を除去 (例: ディレクトリ '/docs/folder' とそのインデックス '/docs/folder' がある場合)
-    const uniqueSlugsMap = new Map<string, string[]>()
-    slugs.forEach((slug) => uniqueSlugsMap.set(slug.join('/'), slug))
-    return Array.from(uniqueSlugsMap.values())
+    return Array.from(new Set(slugs))
   }
 
   const allSlugs = extractSlugs(tree)
+<<<<<<<< HEAD:app/docs/[[...slug]]/page.tsx
   
   const result = allSlugs.map((slug) => ({
     slug,
@@ -94,21 +102,45 @@ export async function generateStaticParams(): Promise<{ slug: string[] }[]> {
   result.push({ slug: ['getting-started', 'introduction'] })
   
   return result
+|||||||| e6aba2c:app/docs/[...slug]/page.tsx
+  // console.log('Generated slugs:', allSlugs); // デバッグ用
+
+  // Return an array of promises with the correct format for Next.js static export
+  return allSlugs.map((slug) =>
+    Promise.resolve({
+      slug,
+    }),
+  )
+========
+  // console.log('Generated slugs:', allSlugs); // デバッグ用
+
+  // Return an array with the correct format for Next.js static export
+  return [
+    { slug: 'getting-started/introduction' },
+    ...allSlugs.map((slug) => ({ slug }))
+  ]
+>>>>>>>> devin/1745903142-pr-preview-deployment:app/docs/[slug]/page.tsx
 }
 
 // ページコンポーネント
 export default async function DocPage({ params }: DocPageProps) {
   const { slug } = await params
+<<<<<<<< HEAD:app/docs/[[...slug]]/page.tsx
   
   if (!slug || slug.length === 0) {
     return redirect('/docs/getting-started/introduction')
   }
   
   const filePath = await getDocPathAsync(slug)
+|||||||| e6aba2c:app/docs/[...slug]/page.tsx
+  const filePath = await getDocPathAsync(slug)
+========
+  const slugArray = slug ? slug.split('/') : []
+  const filePath = await getDocPathAsync(slugArray)
+>>>>>>>> devin/1745903142-pr-preview-deployment:app/docs/[slug]/page.tsx
 
   if (filePath === null) {
-    const resolvedParams = await params
-    console.error(`Doc file not found for slug: ${resolvedParams.slug?.join('/') ?? 'index'}`)
+    console.error(`Doc file not found for slug: ${slug ?? 'index'}`)
     notFound() // ファイルが見つからない場合は 404
   }
 
