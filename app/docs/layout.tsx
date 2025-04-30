@@ -10,7 +10,7 @@ export default async function DocsLayout({ children }: { children: React.ReactNo
     <SidebarProvider>
       <SidebarToggleButton />
       <DocsSidebarNav items={tree} />
-      <div className="md:pl-6 min-w-0">
+      <div className="md:pl-6 min-w-0 w-full">
         {/* 右側コンテンツ */}
         {children}
       </div>

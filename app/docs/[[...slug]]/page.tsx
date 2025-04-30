@@ -1,4 +1,4 @@
-import { notFound } from 'next/navigation'
+import { notFound, redirect } from 'next/navigation'
 import { MDXRemote } from 'next-mdx-remote/rsc' // RSC 用のコンポーネント
 import { getDocPathAsync, getDocContent, getDocTree, DocNavItem } from '@/lib/docs'
 import { Metadata } from 'next'
@@ -37,15 +37,14 @@ const prettyCodeOptions: RehypePrettyCodeOptions = {
 
 interface DocPageProps {
   params: Promise<{
-    slug?: string
+    slug?: string[]
   }>
 }
 
 // メタデータを生成する関数
 export async function generateMetadata({ params }: DocPageProps): Promise<Metadata> {
   const { slug } = await params
-  const slugArray = slug ? slug.split('/') : []
-  const filePath = await getDocPathAsync(slugArray)
+  const filePath = await getDocPathAsync(slug)
   if (filePath === null) {
     return { title: 'Not Found' }
   }
@@ -63,7 +62,7 @@ export async function generateMetadata({ params }: DocPageProps): Promise<Metada
 }
 
 // 静的パスを生成する関数 (ビルド時にページを事前生成)
-export async function generateStaticParams(): Promise<{ slug: string }[]> {
+export async function generateStaticParams(): Promise<{ slug: string[] }[]> {
   const tree = await getDocTree() // ナビゲーションツリーを取得
 
   function extractSlugs(items: DocNavItem[]): string[] {
@@ -87,20 +86,25 @@ export async function generateStaticParams(): Promise<{ slug: string }[]> {
   }
 
   const allSlugs = extractSlugs(tree)
-  // console.log('Generated slugs:', allSlugs); // デバッグ用
-
-  // Return an array with the correct format for Next.js static export
-  return [
-    { slug: 'getting-started/introduction' },
-    ...allSlugs.map((slug) => ({ slug }))
-  ]
+  
+  const result = allSlugs.map((slug) => ({
+    slug: slug.split('/'),
+  }))
+  
+  result.push({ slug: ['getting-started', 'introduction'] })
+  
+  return result
 }
 
 // ページコンポーネント
 export default async function DocPage({ params }: DocPageProps) {
   const { slug } = await params
-  const slugArray = slug ? slug.split('/') : []
-  const filePath = await getDocPathAsync(slugArray)
+  
+  if (!slug || slug.length === 0) {
+    return redirect('/docs/getting-started/introduction')
+  }
+  
+  const filePath = await getDocPathAsync(slug)
 
   if (filePath === null) {
     console.error(`Doc file not found for slug: ${slug ?? 'index'}`)
