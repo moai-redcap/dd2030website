@@ -37,15 +37,14 @@ const prettyCodeOptions: RehypePrettyCodeOptions = {
 
 interface DocPageProps {
   params: Promise<{
-    slug?: string
+    slug?: string[]
   }>
 }
 
 // メタデータを生成する関数
 export async function generateMetadata({ params }: DocPageProps): Promise<Metadata> {
   const { slug } = await params
-  const slugArray = slug ? slug.split('/') : []
-  const filePath = await getDocPathAsync(slugArray)
+  const filePath = await getDocPathAsync(slug)
   if (filePath === null) {
     return { title: 'Not Found' }
   }
