@@ -74,7 +74,7 @@ export default async function Page({ params }: PageProps) {
           <div></div>
         )}
 
-        <Link href="/activity" passHref>
+        <Link href="/history" passHref>
           一覧に戻る
         </Link>
 
