@@ -65,30 +65,30 @@ export async function generateMetadata({ params }: DocPageProps): Promise<Metada
 export async function generateStaticParams(): Promise<{ slug: string[] }[]> {
   const tree = await getDocTree() // ナビゲーションツリーを取得
 
-  function extractSlugs(items: DocNavItem[]): string[][] {
-    let slugs: string[][] = []
+  function extractSlugs(items: DocNavItem[]): string[] {
+    let slugs: string[] = []
     items.forEach((item) => {
       if (item.href) {
         const slugParts = item.href
           .split('/')
           .filter((part: string) => part !== '' && part !== 'docs')
-        // href が '/docs' の場合は空の配列 (トップページ)
-        slugs.push(slugParts.length === 0 ? [] : slugParts)
+        
+        const slug = slugParts.join('/')
+        if (slug) {
+          slugs.push(slug)
+        }
       }
       if (item.items) {
         slugs = slugs.concat(extractSlugs(item.items))
       }
     })
-    // 重複を除去 (例: ディレクトリ '/docs/folder' とそのインデックス '/docs/folder' がある場合)
-    const uniqueSlugsMap = new Map<string, string[]>()
-    slugs.forEach((slug) => uniqueSlugsMap.set(slug.join('/'), slug))
-    return Array.from(uniqueSlugsMap.values())
+    return Array.from(new Set(slugs))
   }
 
   const allSlugs = extractSlugs(tree)
   
   const result = allSlugs.map((slug) => ({
-    slug,
+    slug: slug.split('/'),
   }))
   
   result.push({ slug: ['getting-started', 'introduction'] })
@@ -107,8 +107,7 @@ export default async function DocPage({ params }: DocPageProps) {
   const filePath = await getDocPathAsync(slug)
 
   if (filePath === null) {
-    const resolvedParams = await params
-    console.error(`Doc file not found for slug: ${resolvedParams.slug?.join('/') ?? 'index'}`)
+    console.error(`Doc file not found for slug: ${slug ?? 'index'}`)
     notFound() // ファイルが見つからない場合は 404
   }
 
