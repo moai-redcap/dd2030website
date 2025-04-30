@@ -1,4 +1,6 @@
 import { CoCreation } from '@/components/CoCreation'
+import { buttonVariants } from '@/components/ui/button'
+import NavigateNextIcon from '@mui/icons-material/NavigateNext'
 export default async function Page() {
   return (
     <div>
@@ -14,8 +16,19 @@ export default async function Page() {
         </p>
         <h3 className="text-2xl mt-8">宇多津町のブロードリスニング</h3>
         <p className="mt-4">
-          <a href="https://www.town.utazu.lg.jp/page/4114.html" target="_blank" rel="noopener noreferrer">宇多津町</a>の「第2次宇多津町総合計画」の策定のための町民アンケート（自由記述396件）をAIで分析・整理する先進的なトライアルで活用されました。従来は多くの時間を要していた意見のとりまとめ作業をAIが10分程度で処理し、町民の声をより政策に反映しやすくしました。
+          「第2次宇多津町総合計画」の策定のための町民アンケート（自由記述396件）をAIで分析・整理する先進的なトライアルで活用されました。従来は多くの時間を要していた意見のとりまとめ作業をAIが10分程度で処理し、町民の声をより政策に反映しやすくしました。
         </p>
+        <div className="mt-4">
+          <a 
+            href="https://www.town.utazu.lg.jp/page/4114.html" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className={`${buttonVariants({ variant: 'outline' })} h-9 border-black inline-flex items-center gap-2`}
+          >
+            AIで多くの住民の意見を政策立案に反映する『ブロードリスニング』の先進的なトライアルを実施しました（宇多津町の公式サイト）
+            <NavigateNextIcon />
+          </a>
+        </div>
       </section>
       <CoCreation />
     </div>
