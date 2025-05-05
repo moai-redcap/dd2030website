@@ -130,13 +130,13 @@ export function Header() {
                   </div>
                 </Link>
                 <Link
-                  href="/activity"
+                  href="/history"
                   className="w-full h-11 flex gap-2 flex-wrap"
                   onClick={handleLinkClick}
                 >
                   <div className="gradient w-1"></div>
                   <div className="w-[calc(100%-12px)] flex items-center">
-                    <div>最近の活動</div>
+                    <div>プロジェクトの歴史</div>
                   </div>
                 </Link>
               </div>
