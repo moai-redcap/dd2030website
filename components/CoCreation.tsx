@@ -10,7 +10,7 @@ export function CoCreation() {
       <p className="mt-4">
         実証実験に参画されたい方、寄付にご協力いただける方、開発・デザイン・改善・コミュニティ運営に興味のある方は、こちらから。
       </p>
-      <div className="mt-4 space-y-4">
+      <div className="mt-4">
         <Link href="/co-creation" className={`${buttonVariants()} h-11`}>
           <span></span>
           もっと詳しく
