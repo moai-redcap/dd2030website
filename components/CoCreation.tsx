@@ -16,7 +16,6 @@ export function CoCreation() {
           もっと詳しく
           <NavigateNextIcon />
         </Link>
-
       </div>
     </section>
   )
