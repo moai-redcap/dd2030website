@@ -60,6 +60,22 @@ export default async function Page() {
               <NavigateNextIcon />
             </Link>
           </section>
+          <section className="rounded border-2 border-dashed p-4 mt-4">
+            <h4 className="text-xl">コミュニティ参加前に</h4>
+            <p className="mt-4">以下のガイドラインをご覧ください</p>
+            <Link
+              href="/contribution"
+              className={`${buttonVariants({ variant: 'outline' })} h-11 border-black mt-4`}
+              target="_blank"
+            >
+              <span></span>
+              <div className="flex items-center">
+                <span className="ml-2">貢献者向けガイドライン</span>
+              </div>
+              <NavigateNextIcon />
+            </Link>
+          </section>
+
         </section>
       </section>
     </div>
