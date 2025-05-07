@@ -24,6 +24,9 @@ export default async function Page() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <Markdown content={content} />
+      <div className="mt-8 text-center">
+        <p className="text-gray-700">寄付にご協力いただける方は、kensuzuki@gmail.com までご連絡ください。</p>
+      </div>
       <CoCreation />
     </div>
   )
