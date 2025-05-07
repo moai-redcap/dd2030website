@@ -10,7 +10,8 @@ export default async function Page() {
     '@context': 'https://schema.org',
     '@type': 'WebPage',
     name: 'デジタル民主主義2030（DD2030）貢献者向けガイドライン',
-    description: 'DD2030の貢献者向けガイドライン。政治活動・選挙活動・プロジェクト活動における注意点を記載。',
+    description:
+      'DD2030の貢献者向けガイドライン。政治活動・選挙活動・プロジェクト活動における注意点を記載。',
     url: 'https://dd2030.org/contribution',
   }
 
@@ -21,10 +22,7 @@ export default async function Page() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <div 
-        className="prose prose-lg max-w-none"
-        dangerouslySetInnerHTML={{ __html: content }}
-      />
+      <div className="prose prose-lg max-w-none" dangerouslySetInnerHTML={{ __html: content }} />
     </div>
   )
-} 
+}
