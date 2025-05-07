@@ -70,7 +70,6 @@ export default async function Page() {
             >
               <span></span>
               <div className="flex items-center">
-                <GitHubIcon />
                 <span className="ml-2">貢献者向けガイドライン</span>
               </div>
               <NavigateNextIcon />
