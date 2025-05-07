@@ -8,7 +8,7 @@ export function CoCreation() {
       <div className="gradient w-full h-0.5"></div>
       <h2 className="text-2xl mt-7">未来を共に創る</h2>
       <p className="mt-4">
-        実証実験に参画されたい方、開発・デザイン・改善・コミュニティ運営に興味のある方は、こちらから。
+        実証実験に参画されたい方、寄付にご協力いただける方、開発・デザイン・改善・コミュニティ運営に興味のある方は、こちらから。
       </p>
       <div className="mt-4">
         <Link href="/co-creation" className={`${buttonVariants()} h-11`}>
