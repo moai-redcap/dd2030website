@@ -25,9 +25,7 @@ export default async function Page() {
         </section>
         <section>
           <h3 className="text-2xl mt-10">寄付にご協力いただける方</h3>
-          <p className="mt-4">
-            寄付担当窓口の塔本 shingo.tomoto@gmail.com までご連絡ください
-          </p>
+          <p className="mt-4">寄付担当窓口の塔本 shingo.tomoto@gmail.com までご連絡ください</p>
         </section>
         <section>
           <h3 className="text-2xl mt-10">開発・デザイン・改善・コミュニティ運営に興味のある方</h3>
@@ -35,7 +33,7 @@ export default async function Page() {
             <h4 className="text-xl">Slackに参加する</h4>
             <p className="mt-4">参加して様子を見てみましょう。</p>
             <Link
-              href="https://join.slack.com/t/w1740803485-clv347541/shared_invite/zt-32haul96s-Iopa_ET_YcqXWlpzpqABRA"
+              href="https://join.slack.com/t/w1740803485-clv347541/shared_invite/zt-35bjj11ms-OQtx4Lu08LJ4OqWiRAgNrA"
               className={`${buttonVariants()} h-11 mt-4`}
               target="_blank"
             >
@@ -75,7 +73,6 @@ export default async function Page() {
               <NavigateNextIcon />
             </Link>
           </section>
-
         </section>
       </section>
     </div>
