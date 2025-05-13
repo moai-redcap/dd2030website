@@ -26,6 +26,16 @@ export function Footer() {
           </Link>
         </div>
         <div>
+          <Link
+            href="https://note.com/dd2030"
+            className={`${buttonVariants({ variant: 'ghost' })} h-11`}
+            target="_blank"
+          >
+            <span></span>
+            Note
+          </Link>
+        </div>
+        <div>
           <Link href="/policies/privacy" className={`${buttonVariants({ variant: 'ghost' })} h-11`}>
             <span></span>
             プライバシーポリシー
