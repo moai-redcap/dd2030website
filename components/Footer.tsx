@@ -7,7 +7,7 @@ export function Footer() {
       <div className="sm:flex justify-center pt-6">
         <div>
           <Link
-            href="https://join.slack.com/t/w1740803485-clv347541/shared_invite/zt-32haul96s-Iopa_ET_YcqXWlpzpqABRA"
+            href="https://join.slack.com/t/w1740803485-clv347541/shared_invite/zt-35bjj11ms-OQtx4Lu08LJ4OqWiRAgNrA"
             className={`${buttonVariants({ variant: 'ghost' })} h-11`}
             target="_blank"
           >
