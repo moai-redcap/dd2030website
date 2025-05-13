@@ -6,6 +6,7 @@ import Link from 'next/link'
 import { buttonVariants } from '@/components/ui/button'
 import NavigateNextIcon from '@mui/icons-material/NavigateNext'
 import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore'
+import { CoCreation } from '@/components/CoCreation'
 
 export async function generateStaticParams() {
   // markdownディレクトリのパス
@@ -57,7 +58,7 @@ export default async function Page({ params }: PageProps) {
   return (
     <div>
       <Markdown content={content} />
-
+      <CoCreation isHistory />
       {/* ナビゲーションリンク */}
       <div className="mt-2 mb-1 flex justify-center items-center gap-4">
         {navigation.prev ? (

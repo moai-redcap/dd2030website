@@ -2,9 +2,13 @@ import Link from 'next/link'
 import { buttonVariants } from '@/components/ui/button'
 import NavigateNextIcon from '@mui/icons-material/NavigateNext'
 
-export function CoCreation() {
+interface CocreationProps {
+  isHistory?: boolean
+}
+
+export function CoCreation({ isHistory = false }: CocreationProps) {
   return (
-    <section className="mx-auto max-w-xl mt-15">
+    <section className={`${maxW(isHistory)} mx-auto mt-15`}>
       <div className="gradient w-full h-0.5"></div>
       <h2 className="text-2xl mt-7">未来を共に創る</h2>
       <p className="mt-4">
@@ -19,4 +23,10 @@ export function CoCreation() {
       </div>
     </section>
   )
+}
+function maxW(isH: boolean) {
+  if (isH) {
+    return 'max-w-[800px]'
+  }
+  return 'max-w-xl'
 }
