@@ -56,7 +56,7 @@ export default async function Page() {
             </div>
             <NavigateNextIcon />
           </Link>
-          <Link href="/activity" className={`${buttonVariants()} h-11`}>
+          <Link href="/history" className={`${buttonVariants()} h-11`}>
             <span></span>
             直近の活動
             <NavigateNextIcon />
