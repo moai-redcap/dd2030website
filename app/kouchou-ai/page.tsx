@@ -72,6 +72,14 @@ export default async function Page() {
         </section>
         <div className="flex gap-4 mt-20">
           <Link
+            href="https://www.figma.com/deck/0B55u8rxDjjjpRJbNUEP0Z/%F0%9F%A7%AD-Brand-Compass?node-id=28-1217&t=iTF8igZOaTbM8DMn-1"
+            className={`${buttonVariants({ variant: 'outline' })} h-11 border-black`}
+          >
+            <span></span>
+            Brand Compass
+            <NavigateNextIcon />
+          </Link>
+          <Link
             href="https://github.com/digitaldemocracy2030/kouchou-ai"
             className={`${buttonVariants({ variant: 'outline' })} h-11 border-black`}
             target="_blank"
