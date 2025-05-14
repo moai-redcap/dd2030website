@@ -63,7 +63,7 @@ export default async function Page({ params }: PageProps) {
       <div className="mt-2 mb-1 flex justify-center items-center gap-4">
         {navigation.prev ? (
           <Link
-            href={`/activity/${navigation.prev}`}
+            href={`/history/${navigation.prev}`}
             passHref
             className={`${buttonVariants()} h-11`}
           >
@@ -81,7 +81,7 @@ export default async function Page({ params }: PageProps) {
 
         {navigation.next ? (
           <Link
-            href={`/activity/${navigation.next}`}
+            href={`/history/${navigation.next}`}
             passHref
             className={`${buttonVariants()} h-11`}
           >

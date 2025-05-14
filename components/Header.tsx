@@ -25,7 +25,7 @@ export function Header() {
   const path = usePathname()
   const isNotH1 = () => {
     if (
-      path.indexOf('/activity/') === 0 ||
+      path.indexOf('/history/') === 0 ||
       path.indexOf('/policies/') === 0 ||
       path.indexOf('/docs/') === 0
     ) {
