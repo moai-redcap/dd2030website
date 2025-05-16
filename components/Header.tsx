@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
-import SNSSharePanel from './SNSSharePanel';
+import SNSSharePanel from './SNSSharePanel'
 import { usePathname } from 'next/navigation'
 import {
   Drawer,
