@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import SNSSharePanel from './SNSSharePanel';
 import { usePathname } from 'next/navigation'
 import {
   Drawer,
@@ -51,6 +52,7 @@ export function Header() {
               </Link>
             </div>
           )}
+          <SNSSharePanel className="mr-4" />
           <Drawer direction="right" open={open} onOpenChange={setOpen}>
             <DrawerTrigger asChild>
               <Button className="cursor-pointer w-11 h-11">
