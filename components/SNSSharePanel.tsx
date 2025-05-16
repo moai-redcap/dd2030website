@@ -1,6 +1,6 @@
-"use client";
+'use client'
 
-import { useState } from "react";
+import { useState } from 'react'
 import {
   TwitterShareButton,
   FacebookShareButton,
@@ -10,12 +10,12 @@ import {
   FacebookIcon,
   LineIcon,
   HatenaIcon,
-} from "react-share";
+} from 'react-share'
 
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from 'framer-motion'
 
-const shareUrl = "https://dd2030.org/";
-const shareTitle = "デジタル民主主義2030プロジェクトポータルサイト";
+const shareUrl = 'https://dd2030.org/'
+const shareTitle = 'デジタル民主主義2030プロジェクトポータルサイト'
 
 const SNSButtons = () => (
   <>
@@ -32,10 +32,10 @@ const SNSButtons = () => (
       <XIcon size={32} round />
     </TwitterShareButton>
   </>
-);
+)
 
-export default function SNSSharePanel({ className = "" }: { className?: string }) {
-  const [visible, setVisible] = useState(false);
+export default function SNSSharePanel({ className = '' }: { className?: string }) {
+  const [visible, setVisible] = useState(false)
 
   return (
     <div className={`relative flex items-center gap-2 ${className}`}>
@@ -47,7 +47,7 @@ export default function SNSSharePanel({ className = "" }: { className?: string }
             initial={{ opacity: 0, x: 10 }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: 10 }}
-            transition={{ duration: 0.2, ease: "easeInOut" }}
+            transition={{ duration: 0.2, ease: 'easeInOut' }}
           >
             <SNSButtons />
           </motion.div>
@@ -57,10 +57,8 @@ export default function SNSSharePanel({ className = "" }: { className?: string }
       {/* SHAREボタン */}
       <button
         className={`text-sm font-normal px-3 py-0.5 rounded-none transition z-10
-        ${visible
-          ? "bg-white text-black border border-black"
-          : "bg-black text-white border border-black hover:bg-gray-700 hover:text-white"
-        }`}
+    ${visible ? 'bg-white text-black border border-black' : 'bg-black text-white border border-black hover:bg-gray-700 hover:text-white'
+    }`}
         onClick={() => setVisible((v) => !v)}
       >
         SHARE
@@ -74,12 +72,12 @@ export default function SNSSharePanel({ className = "" }: { className?: string }
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.2, ease: "easeInOut" }}
+            transition={{ duration: 0.2, ease: 'easeInOut' }}
           >
             <SNSButtons />
           </motion.div>
         )}
       </AnimatePresence>
     </div>
-  );
+  )
 }
