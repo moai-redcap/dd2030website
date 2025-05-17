@@ -10,7 +10,7 @@ export default async function Page() {
   const content = await marked(markdown)
 
   return (
-    <div className="max-w-xl mx-auto">
+    <div className="max-w-4xl mx-auto">
       <Markdown content={content} />
       <CoCreation />
     </div>
