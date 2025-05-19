@@ -1,9 +1,11 @@
 name: PR Preview Deployment
 # PRが作成または更新された時に自動的にプレビュー環境をデプロイするワークフロー
-
+ 
 on:
-  pull_request:
-    types: [opened, synchronize, reopened]
+  #pull_request:
+  #  types: [opened, synchronize, reopened]
+  workflow_dispatch:
+
 
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
