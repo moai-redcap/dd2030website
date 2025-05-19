@@ -11,18 +11,27 @@ import { CoCreation } from '@/components/CoCreation'
 export async function generateStaticParams() {
   // markdownディレクトリのパス
   const markdownDir = path.join(process.cwd(), 'markdown')
-
-  // ディレクトリ内のファイル一覧を取得
-  const files = fs.readdirSync(markdownDir)
-
-  // githubまたはslackで始まる.mdファイルのみを抽出し、拡張子を除去してスラッグとして使用
-  return files
-    .filter(
-      (file) => file.endsWith('.md') && (file.startsWith('github') || file.startsWith('slack')),
-    )
-    .map((file) => ({
-      slug: file.replace(/\.md$/, ''),
-    }))
+  const historyDir = path.join(markdownDir, 'history')
+  
+  const slugs = []
+  
+  if (fs.existsSync(historyDir)) {
+    const weekDirs = fs.readdirSync(historyDir).filter(dir => dir.startsWith('week'))
+    
+    weekDirs.forEach(weekDir => {
+      const weekDirPath = path.join(historyDir, weekDir)
+      const weekFiles = fs.readdirSync(weekDirPath)
+      
+      weekFiles.forEach(file => {
+        if (file.endsWith('.md')) {
+          const slug = `history/${weekDir}/${file.replace(/\.md$/, '')}`
+          slugs.push({ slug })
+        }
+      })
+    })
+  }
+  
+  return slugs
 }
 
 type PageProps = {
@@ -33,9 +42,14 @@ type PageProps = {
 
 export default async function Page({ params }: PageProps) {
   const slug = (await params).slug
-
-  // ファイルパスを構築
-  const filePath = path.join(process.cwd(), 'markdown', `${slug}.md`)
+  let filePath = ''
+  
+  const parts = slug.split('/')
+  if (parts.length >= 3) {
+    const weekDir = parts[1]
+    const fileBase = parts[2]
+    filePath = path.join(process.cwd(), 'markdown', 'history', weekDir, `${fileBase}.md`)
+  }
 
   // ファイルが存在するか確認
   if (!fs.existsSync(filePath)) {
@@ -108,50 +122,61 @@ function generateNavigationLinks(currentSlug: string): {
 
   // markdownディレクトリのパス
   const markdownDir = path.join(process.cwd(), 'markdown')
+  const historyDir = path.join(markdownDir, 'history')
 
-  // ディレクトリ内のファイル一覧を取得
-  const files = fs.readdirSync(markdownDir)
-
-  // 現在のslugからファイル名を取得
-  // const currentFile = `${currentSlug}.md`
-
-  // slugから数値部分を抽出する正規表現
-  const numRegex = /(\d+)w/
-  const match = currentSlug.match(numRegex)
-
-  if (match) {
-    const currentNum = parseInt(match[1], 10)
-    const prevNum = currentNum - 1
-    const nextNum = currentNum + 1
-
-    // プレフィックスとサフィックスを取得
-    let prevSlug = ''
-    let nextSlug = ''
-
-    if (currentSlug.startsWith('slack')) {
-      // Slackの場合は単純に数字を変更
-      prevSlug = `slack${prevNum}w`
-      nextSlug = `slack${nextNum}w`
-    } else if (currentSlug.startsWith('github')) {
-      // GitHubの場合はプロジェクト名部分を保持
-      const projectPart = currentSlug.substring(currentSlug.indexOf('-'))
-      prevSlug = `github${prevNum}w${projectPart}`
-      nextSlug = `github${nextNum}w${projectPart}`
-    }
-
-    // 前のファイルを確認
-    if (prevSlug) {
-      const prevFile = `${prevSlug}.md`
-      if (files.includes(prevFile)) {
-        result.prev = prevSlug
-      }
-    }
-
-    // 次のファイルを確認
-    if (nextSlug) {
-      const nextFile = `${nextSlug}.md`
-      if (files.includes(nextFile)) {
-        result.next = nextSlug
+  const parts = currentSlug.split('/')
+  if (parts.length >= 3) {
+    const weekDir = parts[1] // week1_20250404
+    const fileBase = parts[2] // slack または project
+    
+    const weekMatch = weekDir.match(/week(\d+)_/)
+    if (weekMatch) {
+      const currentWeek = parseInt(weekMatch[1], 10)
+      const prevWeek = currentWeek - 1
+      const nextWeek = currentWeek + 1
+      
+      if (fs.existsSync(historyDir)) {
+        const weekDirs = fs.readdirSync(historyDir)
+          .filter(dir => dir.startsWith('week'))
+          .sort((a, b) => {
+            const aMatch = a.match(/week(\d+)_/)
+            const bMatch = b.match(/week(\d+)_/)
+            const aWeek = aMatch ? parseInt(aMatch[1], 10) : 0
+            const bWeek = bMatch ? parseInt(bMatch[1], 10) : 0
+            return aWeek - bWeek
+          })
+          
+        const prevDirIndex = weekDirs.findIndex(dir => {
+          const match = dir.match(/week(\d+)_/)
+          return match && parseInt(match[1], 10) === prevWeek
+        })
+        
+        if (prevDirIndex >= 0) {
+          const prevDir = weekDirs[prevDirIndex]
+          const prevDirPath = path.join(historyDir, prevDir)
+          
+          if (fileBase === 'slack' && fs.existsSync(path.join(prevDirPath, 'slack.md'))) {
+            result.prev = `history/${prevDir}/slack`
+          } else if (fs.existsSync(path.join(prevDirPath, `${fileBase}.md`))) {
+            result.prev = `history/${prevDir}/${fileBase}`
+          }
+        }
+        
+        const nextDirIndex = weekDirs.findIndex(dir => {
+          const match = dir.match(/week(\d+)_/)
+          return match && parseInt(match[1], 10) === nextWeek
+        })
+        
+        if (nextDirIndex >= 0) {
+          const nextDir = weekDirs[nextDirIndex]
+          const nextDirPath = path.join(historyDir, nextDir)
+          
+          if (fileBase === 'slack' && fs.existsSync(path.join(nextDirPath, 'slack.md'))) {
+            result.next = `history/${nextDir}/slack`
+          } else if (fs.existsSync(path.join(nextDirPath, `${fileBase}.md`))) {
+            result.next = `history/${nextDir}/${fileBase}`
+          }
+        }
       }
     }
   }

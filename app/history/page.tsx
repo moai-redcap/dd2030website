@@ -5,36 +5,15 @@ import { buttonVariants } from '@/components/ui/button'
 
 export default async function Page() {
   const markdownDir = path.join(process.cwd(), 'markdown')
+  const historyDir = path.join(markdownDir, 'history')
 
-  const files = fs.readdirSync(markdownDir)
+  const weekDirs = fs.existsSync(historyDir)
+    ? fs.readdirSync(historyDir).filter(dir => dir.startsWith('week'))
+    : []
 
-  // const historyFiles = files.filter(
-  //   (file) => file.startsWith('history') && file.endsWith('.md'),
-  // )
-  const slackFiles = files.filter(
-    (file) => file.startsWith('slack') && file.endsWith('.md'),
-  )
-  const githubFiles = files.filter(
-    (file) => file.startsWith('github') && file.endsWith('.md'),
-  )
-
-  const getSlugFromFilename = (filename: string) => filename.replace('.md', '')
-
-
-  const getProjectFromFilename = (filename: string) => {
-    if (filename.startsWith('github')) {
-      const match = filename.match(/github\d+w-(.+)\.md/)
-      return match && match[1] ? match[1] : 'unknown'
-    }
-    return 'unknown'
-  }
-
-  const getWeekFromFilename = (filename: string) => {
-    if (filename.startsWith('slack') || filename.startsWith('github') || filename.startsWith('history')) {
-      const match = filename.match(/(?:slack|github|history)(\d+)w/)
-      return match && match[1] ? parseInt(match[1], 10) : 0
-    }
-    return 0
+  const getWeekFromDirname = (dirname: string) => {
+    const match = dirname.match(/week(\d+)_/)
+    return match && match[1] ? parseInt(match[1], 10) : 0
   }
 
   const getProjectDisplayName = (projectName: string) => {
@@ -57,32 +36,34 @@ export default async function Page() {
     { slack: string[]; github: Record<string, string[]> }
   >
 
-  slackFiles.forEach((file) => {
-    const week = getWeekFromFilename(file)
-    if (!weeklyActivities[week]) {
-      weeklyActivities[week] = { slack: [], github: {} }
-    }
-    weeklyActivities[week].slack.push(file)
-  })
-
-  githubFiles.forEach((file) => {
-    const week = getWeekFromFilename(file)
-    const project = getProjectFromFilename(file)
+  weekDirs.forEach((weekDir) => {
+    const week = getWeekFromDirname(weekDir)
+    if (week === 0) return
 
     if (!weeklyActivities[week]) {
       weeklyActivities[week] = { slack: [], github: {} }
     }
 
-    if (!weeklyActivities[week].github[project]) {
-      weeklyActivities[week].github[project] = []
+    const weekDirPath = path.join(historyDir, weekDir)
+    const weekFiles = fs.readdirSync(weekDirPath)
+
+    if (weekFiles.includes('slack.md')) {
+      weeklyActivities[week].slack.push(`history/${weekDir}/slack`)
     }
 
-    weeklyActivities[week].github[project].push(file)
+    weekFiles.forEach(file => {
+      if (file !== 'slack.md' && file.endsWith('.md')) {
+        const project = file.replace('.md', '')
+        
+        if (!weeklyActivities[week].github[project]) {
+          weeklyActivities[week].github[project] = []
+        }
+        
+        weeklyActivities[week].github[project].push(`history/${weekDir}/${project}`)
+      }
+    })
   })
 
-  // historyFiles.forEach((file) => {
-  //   // FIXME: implement
-  // })
   const sortedWeeks = Object.keys(weeklyActivities)
     .map((week) => parseInt(week, 10))
     .sort((a, b) => a - b)
@@ -99,7 +80,7 @@ export default async function Page() {
           {/* Slack活動 */}
           {weeklyActivities[week].slack.map((file) => (
             <Link key={file}
-              href={`/history/${getSlugFromFilename(file)}`}
+              href={`/history/${file}`}
               className={`${buttonVariants({ variant: 'link' })} h-11 mt-4`}
             >
               Slack
@@ -111,7 +92,7 @@ export default async function Page() {
 
                 files.map((file) => (
                   <Link key={file}
-                    href={`/history/${getSlugFromFilename(file)}`}
+                    href={`/history/${file}`}
                     className={`${buttonVariants({ variant: 'link' })} h-11 mt-4`}
                   >
                     {getProjectDisplayName(project)}
