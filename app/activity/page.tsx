@@ -1,16 +1,7 @@
-import path from 'path'
-import fs from 'fs'
-
 export default async function Page() {
-  // マークダウンディレクトリのパス
-  const markdownDir = path.join(process.cwd(), 'markdown')
-
-  // ディレクトリ内のファイル一覧を取得
-  const files = fs.readdirSync(markdownDir)
-
-  // slackとgithubのファイルをフィルタリング
-  const slackFiles = files.filter((file) => file.startsWith('slack') && file.endsWith('.md'))
-  const githubFiles = files.filter((file) => file.startsWith('github') && file.endsWith('.md'))
+  // 静的エクスポートに対応していないため、ファイルリストは表示しない
+  const slackFiles: string[] = []
+  const githubFiles: Record<string, string[]> = {}
 
   return (
     <section className="mx-auto max-w-xl">
@@ -25,7 +16,7 @@ export default async function Page() {
       </section>
       <section>
         <h3 className="text-2xl mt-8 mb-4">GitHub活動記録</h3>
-        {githubFiles.length > 0 ? (
+        {Object.keys(githubFiles).length > 0 ? (
           <p>GitHubの活動記録は静的エクスポートに対応していないため削除されました。</p>
         ) : (
           <p>GitHub活動記録はまだありません。</p>
