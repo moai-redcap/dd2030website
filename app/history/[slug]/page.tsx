@@ -13,7 +13,7 @@ export async function generateStaticParams() {
   const markdownDir = path.join(process.cwd(), 'markdown')
   const historyDir = path.join(markdownDir, 'history')
   
-  const slugs = []
+  const slugs: { slug: string }[] = []
   
   if (fs.existsSync(historyDir)) {
     const weekDirs = fs.readdirSync(historyDir).filter(dir => dir.startsWith('week'))
