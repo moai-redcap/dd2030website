@@ -90,7 +90,7 @@ export default async function Page() {
           {/* 週のダイジェスト表示 */}
           {weeklyDigests[week] && (
             <div className="mb-6">
-              <Markdown content={marked.parse(weeklyDigests[week])} />
+              <Markdown content={marked.parse(weeklyDigests[week]) as string} />
             </div>
           )}
 
