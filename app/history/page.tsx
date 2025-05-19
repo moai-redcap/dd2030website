@@ -2,6 +2,8 @@ import path from 'path'
 import fs from 'fs'
 import Link from 'next/link'
 import { buttonVariants } from '@/components/ui/button'
+import { marked } from 'marked'
+import { Markdown } from '@/components/Markdown'
 
 export default async function Page() {
   const markdownDir = path.join(process.cwd(), 'markdown')
@@ -36,6 +38,8 @@ export default async function Page() {
     { slack: string[]; github: Record<string, string[]> }
   >
 
+  const weeklyDigests = {} as Record<number, string>
+
   weekDirs.forEach((weekDir) => {
     const week = getWeekFromDirname(weekDir)
     if (week === 0) return
@@ -47,12 +51,18 @@ export default async function Page() {
     const weekDirPath = path.join(historyDir, weekDir)
     const weekFiles = fs.readdirSync(weekDirPath)
 
+    if (weekFiles.includes('digest.md')) {
+      const digestPath = path.join(weekDirPath, 'digest.md')
+      const digestContent = fs.readFileSync(digestPath, 'utf-8')
+      weeklyDigests[week] = digestContent
+    }
+
     if (weekFiles.includes('slack.md')) {
       weeklyActivities[week].slack.push(`history/${weekDir}/slack`)
     }
 
     weekFiles.forEach(file => {
-      if (file !== 'slack.md' && file.endsWith('.md')) {
+      if (file !== 'slack.md' && file !== 'digest.md' && file.endsWith('.md')) {
         const project = file.replace('.md', '')
         
         if (!weeklyActivities[week].github[project]) {
@@ -76,6 +86,13 @@ export default async function Page() {
       {sortedWeeks.map((week) => (
         <section key={week}>
           <h3 className="text-2xl mt-8 mb-4">第{week}週の活動</h3>
+
+          {/* 週のダイジェスト表示 */}
+          {weeklyDigests[week] && (
+            <div className="mb-6">
+              <Markdown content={marked.parse(weeklyDigests[week])} />
+            </div>
+          )}
 
           {/* Slack活動 */}
           {weeklyActivities[week].slack.map((file) => (
