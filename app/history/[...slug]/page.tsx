@@ -13,7 +13,7 @@ export async function generateStaticParams() {
   const markdownDir = path.join(process.cwd(), 'markdown')
   const historyDir = path.join(markdownDir, 'history')
   
-  const slugs: { slug: string }[] = []
+  const slugs: { slug: string[] }[] = []
   
   if (fs.existsSync(historyDir)) {
     const weekDirs = fs.readdirSync(historyDir).filter(dir => dir.startsWith('week'))
@@ -24,7 +24,7 @@ export async function generateStaticParams() {
       
       weekFiles.forEach(file => {
         if (file.endsWith('.md')) {
-          const slug = `history/${weekDir}/${file.replace(/\.md$/, '')}`
+          const slug = [weekDir, file.replace(/\.md$/, '')]
           slugs.push({ slug })
         }
       })
@@ -36,7 +36,7 @@ export async function generateStaticParams() {
 
 type PageProps = {
   params: Promise<{
-    slug: string
+    slug: string[]
   }>
 }
 
@@ -44,10 +44,9 @@ export default async function Page({ params }: PageProps) {
   const slug = (await params).slug
   let filePath = ''
   
-  const parts = slug.split('/')
-  if (parts.length >= 3) {
-    const weekDir = parts[1]
-    const fileBase = parts[2]
+  if (Array.isArray(slug) && slug.length >= 2) {
+    const weekDir = slug[0]
+    const fileBase = slug[1]
     filePath = path.join(process.cwd(), 'markdown', 'history', weekDir, `${fileBase}.md`)
   }
 
@@ -77,7 +76,7 @@ export default async function Page({ params }: PageProps) {
       <div className="mt-2 mb-1 flex justify-center items-center gap-4">
         {navigation.prev ? (
           <Link
-            href={`/history/${navigation.prev}`}
+            href={`/history/${navigation.prev.join('/')}`}
             passHref
             className={`${buttonVariants()} h-11`}
           >
@@ -95,7 +94,7 @@ export default async function Page({ params }: PageProps) {
 
         {navigation.next ? (
           <Link
-            href={`/history/${navigation.next}`}
+            href={`/history/${navigation.next.join('/')}`}
             passHref
             className={`${buttonVariants()} h-11`}
           >
@@ -111,23 +110,22 @@ export default async function Page({ params }: PageProps) {
 }
 
 // ナビゲーションリンクを生成する関数
-function generateNavigationLinks(currentSlug: string): {
-  prev: string | null
-  next: string | null
+function generateNavigationLinks(currentSlug: string[]): {
+  prev: string[] | null
+  next: string[] | null
 } {
   const result = {
-    prev: null as string | null,
-    next: null as string | null,
+    prev: null as string[] | null,
+    next: null as string[] | null,
   }
 
   // markdownディレクトリのパス
   const markdownDir = path.join(process.cwd(), 'markdown')
   const historyDir = path.join(markdownDir, 'history')
 
-  const parts = currentSlug.split('/')
-  if (parts.length >= 3) {
-    const weekDir = parts[1] // week1_20250404
-    const fileBase = parts[2] // slack または project
+  if (Array.isArray(currentSlug) && currentSlug.length >= 2) {
+    const weekDir = currentSlug[0] // week1_20250404
+    const fileBase = currentSlug[1] // slack または project
     
     const weekMatch = weekDir.match(/week(\d+)_/)
     if (weekMatch) {
@@ -156,9 +154,9 @@ function generateNavigationLinks(currentSlug: string): {
           const prevDirPath = path.join(historyDir, prevDir)
           
           if (fileBase === 'slack' && fs.existsSync(path.join(prevDirPath, 'slack.md'))) {
-            result.prev = `history/${prevDir}/slack`
+            result.prev = [prevDir, 'slack']
           } else if (fs.existsSync(path.join(prevDirPath, `${fileBase}.md`))) {
-            result.prev = `history/${prevDir}/${fileBase}`
+            result.prev = [prevDir, fileBase]
           }
         }
         
@@ -172,9 +170,9 @@ function generateNavigationLinks(currentSlug: string): {
           const nextDirPath = path.join(historyDir, nextDir)
           
           if (fileBase === 'slack' && fs.existsSync(path.join(nextDirPath, 'slack.md'))) {
-            result.next = `history/${nextDir}/slack`
+            result.next = [nextDir, 'slack']
           } else if (fs.existsSync(path.join(nextDirPath, `${fileBase}.md`))) {
-            result.next = `history/${nextDir}/${fileBase}`
+            result.next = [nextDir, fileBase]
           }
         }
       }
