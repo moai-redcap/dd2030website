@@ -10,7 +10,7 @@ export default async function Page() {
   const historyDir = path.join(markdownDir, 'history')
 
   const weekDirs = fs.existsSync(historyDir)
-    ? fs.readdirSync(historyDir).filter(dir => dir.startsWith('week'))
+    ? fs.readdirSync(historyDir).filter((dir: string) => dir.startsWith('week'))
     : []
 
   const getWeekFromDirname = (dirname: string) => {
@@ -40,7 +40,7 @@ export default async function Page() {
 
   const weeklyDigests = {} as Record<number, string>
 
-  weekDirs.forEach((weekDir) => {
+  weekDirs.forEach((weekDir: string) => {
     const week = getWeekFromDirname(weekDir)
     if (week === 0) return
 
@@ -61,7 +61,7 @@ export default async function Page() {
       weeklyActivities[week].slack.push(`history/${weekDir}/slack`)
     }
 
-    weekFiles.forEach(file => {
+    weekFiles.forEach((file: string) => {
       if (file !== 'slack.md' && file !== 'digest.md' && file.endsWith('.md')) {
         const project = file.replace('.md', '')
         
@@ -75,7 +75,7 @@ export default async function Page() {
   })
 
   const sortedWeeks = Object.keys(weeklyActivities)
-    .map((week) => parseInt(week, 10))
+    .map((week: string) => parseInt(week, 10))
     .sort((a, b) => a - b)
 
   return (
@@ -83,7 +83,7 @@ export default async function Page() {
       <h2 className="text-3xl">プロジェクトの歴史</h2>
 
       {/* 週ごとの活動記録（時系列順） */}
-      {sortedWeeks.map((week) => (
+      {sortedWeeks.map((week: number) => (
         <section key={week}>
           <h3 className="text-2xl mt-8 mb-4">第{week}週の活動</h3>
 
@@ -95,7 +95,7 @@ export default async function Page() {
           )}
 
           {/* Slack活動 */}
-          {weeklyActivities[week].slack.map((file) => (
+          {weeklyActivities[week].slack.map((file: string) => (
             <Link key={file}
               href={`/history/${file}`}
               className={`${buttonVariants({ variant: 'link' })} h-11 mt-4`}
@@ -105,9 +105,9 @@ export default async function Page() {
           ))}
           {
             Object.entries(weeklyActivities[week].github).map(
-              ([project, files]) => (
+              ([project, files]: [string, string[]]) => (
 
-                files.map((file) => (
+                files.map((file: string) => (
                   <Link key={file}
                     href={`/history/${file}`}
                     className={`${buttonVariants({ variant: 'link' })} h-11 mt-4`}
