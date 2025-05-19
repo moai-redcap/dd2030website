@@ -48,10 +48,14 @@ jobs:
       
       - name: Prepare directory structure for PR preview
         run: |
+          # 一時ディレクトリにコピー
+          mkdir -p /tmp/pr-preview-files
+          cp -r ./out/* /tmp/pr-preview-files/
+          # ディレクトリをクリア
+          rm -rf ./out/*
+          # 正しい場所にファイルを配置
           mkdir -p ./out/pr-preview/pr-${{ github.event.pull_request.number }}
-          cp -r ./out/* ./out/pr-preview/pr-${{ github.event.pull_request.number }}/
-          # 元のファイルを削除（コピー先と重複するため）
-          find ./out -maxdepth 1 -not -path "./out" -not -path "./out/pr-preview" -exec rm -rf {} \;
+          cp -r /tmp/pr-preview-files/* ./out/pr-preview/pr-${{ github.event.pull_request.number }}/
       
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
