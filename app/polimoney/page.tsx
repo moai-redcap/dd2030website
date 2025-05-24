@@ -29,7 +29,6 @@ export default async function Page() {
             政治資金の透明化：政治資金の見える化ダッシュボードの開発
           </p>
         </hgroup>
-        <div className="my-8" />
         <Image
           src="/home__3project__polimoney.webp"
           width={576}
