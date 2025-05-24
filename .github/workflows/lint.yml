@@ -33,5 +33,5 @@ jobs:
           auto_fix: true
           commit: true
           git_name: "Lint Action"
-          git_email: "lint-action@github.com"
+          git_email: "lint-action@github.com" 
           commit_message: "Fix code style issues with ESLint"
