@@ -80,7 +80,6 @@ export default async function Page() {
       <CoCreation />
       {/* トップに戻るボタン */}
       <TopScrollButton />
-
     </div>
   )
 }
