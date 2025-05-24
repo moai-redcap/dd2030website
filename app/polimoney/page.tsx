@@ -62,9 +62,8 @@ export default async function Page() {
         </div>
       </section>
       <CoCreation />
-            {/* トップに戻るボタン */}
-            <TopScrollButton />
-      
+      {/* トップに戻るボタン */}
+      <TopScrollButton />
     </div>
   )
 }
