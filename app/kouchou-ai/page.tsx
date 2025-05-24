@@ -85,7 +85,7 @@ export default async function Page() {
             また、ネット上のみで情報収集をするのではなく、タウンミーティングや直接的なヒアリングなど情報源を多様化することが有益です。ブロードリスニングの対象データとしても、電話やオフラインで寄せられる多様な声を集めることは重要であり、様々な声を集めた上で全体像を可視化することで、よりよい意思決定を支える仕組みになると考えています。
           </p>
         </section>
-        <div className="flex gap-4 mt-20">
+        <div className="flex flex-wrap gap-4 mt-20">
           <Link
             href="https://www.figma.com/deck/0B55u8rxDjjjpRJbNUEP0Z/%F0%9F%A7%AD-Brand-Compass?node-id=28-1217&t=iTF8igZOaTbM8DMn-1"
             className={`${buttonVariants({ variant: 'outline' })} h-11 border-black`}
@@ -106,7 +106,10 @@ export default async function Page() {
             </div>
             <NavigateNextIcon />
           </Link>
-          <Link href="/history" className={`${buttonVariants()} h-11`}>
+          <Link
+            href="/history"
+            className={`${buttonVariants()} h-11 sm:w-auto`}
+          >
             <span></span>
             直近の活動
             <NavigateNextIcon />
