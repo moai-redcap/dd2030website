@@ -4,6 +4,8 @@ import Link from 'next/link'
 import { buttonVariants } from '@/components/ui/button'
 import { marked } from 'marked'
 import { Markdown } from '@/components/Markdown'
+import { TopScrollButton } from '@/components/TopScrollButton'
+
 
 export default async function Page() {
   const markdownDir = path.join(process.cwd(), 'markdown')
@@ -120,6 +122,8 @@ export default async function Page() {
         </section >
       ))
       }
+      {/* トップに戻るボタン */}
+      <TopScrollButton />
 
 
     </section >
