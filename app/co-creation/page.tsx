@@ -14,7 +14,7 @@ export default async function Page() {
           </p>
           <p className="mt-4">下のGoogleフォームよりご連絡下さい。 </p>
           <Link
-            href="https://docs.google.com/forms/d/e/1FAIpQLSdAJojxjpIJnOMtydYTOhtsTkkKgDS22R-iHYDVMstYd2RUBA/viewform"
+            href="https://docs.google.com/forms/d/e/1FAIpQLScytDD9cdYwcl_Gsr0qal-Op7mpXaQzK3KGTk_FsahY5FkU9w/viewform?usp=header"
             className={`${buttonVariants()} h-11 mt-4`}
             target="_blank"
           >
