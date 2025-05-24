@@ -4,6 +4,8 @@ import Image from 'next/image'
 import NavigateNextIcon from '@mui/icons-material/NavigateNext'
 import GitHubIcon from '@mui/icons-material/GitHub'
 import { CoCreation } from '@/components/CoCreation'
+import { TopScrollButton } from '@/components/TopScrollButton'
+
 export default async function Page() {
   return (
     <div>
@@ -60,6 +62,9 @@ export default async function Page() {
         </div>
       </section>
       <CoCreation />
+            {/* トップに戻るボタン */}
+            <TopScrollButton />
+      
     </div>
   )
 }

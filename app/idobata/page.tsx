@@ -4,12 +4,27 @@ import Image from 'next/image'
 import NavigateNextIcon from '@mui/icons-material/NavigateNext'
 import GitHubIcon from '@mui/icons-material/GitHub'
 import { CoCreation } from '@/components/CoCreation'
+import { TopScrollButton } from '@/components/TopScrollButton'
+
 export default async function Page() {
   return (
     <div>
       <section className="mx-auto max-w-xl mt-10">
         <hgroup>
           <h2 className="text-3xl">いどばた</h2>
+          <div className="flex gap-4 mt-20">
+            {/* <Link href="https://github.com/digitaldemocracy2030/idobata/blob/main/README.md" className={`${buttonVariants()} h-11`}>
+              <span></span>
+              使い方を見てみる
+              <NavigateNextIcon />
+            </Link> */}
+            {/* <Link href="" className={`${buttonVariants()} h-11`}>
+              <span></span>
+              実際に使ってみる
+              <NavigateNextIcon />
+            </Link> */}
+          </div>
+          <div className="my-8" />
           <p className="font-bold mt-2">
             民意による政策反映：デジタル上で大規模熟議が可能なプラットフォームの構築
           </p>
@@ -64,6 +79,9 @@ export default async function Page() {
         </div>
       </section>
       <CoCreation />
+      {/* トップに戻るボタン */}
+      <TopScrollButton />
+
     </div>
   )
 }
