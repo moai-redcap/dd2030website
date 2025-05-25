@@ -6,7 +6,6 @@ import { marked } from 'marked'
 import { Markdown } from '@/components/Markdown'
 import { TopScrollButton } from '@/components/TopScrollButton'
 import AutoScrollToLatestWeek from '@/components/AutoScrollToLatestWeek'
-import HighLight from '@/components/HighLight'
 import LatestWeekHeading from '@/components/LatestWeekHeading'
 
 export default async function Page() {
@@ -96,7 +95,7 @@ export default async function Page() {
           {week === latestWeek ? (
             <LatestWeekHeading week={week} />
           ) : (<h3 className="text-2xl mt-8 mb-4">第{week}週の活動</h3>
-            )}
+          )}
           {/* 週のダイジェスト表示 */}
           {weeklyDigests[week] && (
             <div className="mb-6">
