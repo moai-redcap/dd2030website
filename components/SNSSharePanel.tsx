@@ -1,6 +1,7 @@
 'use client'
 
-import { useState } from 'react'
+import { usePathname } from 'next/navigation'
+import { useState, useEffect } from 'react'
 import {
   TwitterShareButton,
   FacebookShareButton,
@@ -14,27 +15,57 @@ import {
 
 import { motion, AnimatePresence } from 'framer-motion'
 
-const shareUrl = 'https://dd2030.org/'
-const shareTitle = 'デジタル民主主義2030プロジェクトポータルサイト'
+const titleMap: Record<string, string> = {
+  '/about': 'デジタル民主主義2030とは',
+  '/activity': '活動記録',
+  '/case': '活用事例',
+  '/case/idobata': 'いどばたの活用事例',
+  '/case/kouchou-ai': '広聴AIの活用事例',
+  '/case/polimoney': 'Polimoneyの活用事例',
+  '/co-creation': '未来を共に創る',
+  '/contribution': 'デジタル民主主義2030（DD2030）貢献者向けガイドライン',
+  '/history': 'プロジェクトの歴史',
+  '/idobata': 'いどばた',
+  '/kouchou-ai': '広聴AI',
+  '/logo-compe': 'デジタル民主主義 2030 ロゴデザインコンペ',
+  '/news': 'お知らせ',
+  '/policies/privacy': 'プライバシーポリシー',
+  '/policies/terms': '利用規約',
+  '/polimoney': 'Polimoney',
+}
 
-const SNSButtons = () => (
+export default function SNSSharePanel({ className = '' }: { className?: string }) {
+  const pathname = usePathname()
+  const [origin, setOrigin] = useState('')
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      setOrigin(window.location.origin)
+    }
+  }, [])
+
+  const siteTitle = 'デジタル民主主義2030プロジェクトポータルサイト'
+  const title = titleMap[pathname]
+  const shareTitle = title ? `${siteTitle} - ${title}` : siteTitle
+  const url = `${origin}${pathname}`
+
+  const SNSButtons = () => (
   <>
-    <HatenaShareButton url={shareUrl} title={shareTitle}>
+    <HatenaShareButton url={url} title={shareTitle}>
       <HatenaIcon size={32} round />
     </HatenaShareButton>
-    <LineShareButton url={shareUrl} title={shareTitle}>
+    <LineShareButton url={url} title={shareTitle}>
       <LineIcon size={32} round />
     </LineShareButton>
-    <FacebookShareButton url={shareUrl}>
+    <FacebookShareButton url={url} title={shareTitle}>
       <FacebookIcon size={32} round />
     </FacebookShareButton>
-    <TwitterShareButton url={shareUrl} title={shareTitle}>
+    <TwitterShareButton url={url} title={shareTitle}>
       <XIcon size={32} round />
     </TwitterShareButton>
   </>
-)
+  )
 
-export default function SNSSharePanel({ className = '' }: { className?: string }) {
   const [visible, setVisible] = useState(false)
 
   return (
