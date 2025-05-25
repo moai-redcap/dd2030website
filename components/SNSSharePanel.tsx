@@ -32,9 +32,6 @@ const titleMap: Record<string, string> = {
   '/policies/privacy': 'プライバシーポリシー',
   '/policies/terms': '利用規約',
   '/polimoney': 'Polimoney',
-
-
-  
 }
 
 export default function SNSSharePanel({ className = '' }: { className?: string }) {
