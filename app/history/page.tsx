@@ -5,7 +5,8 @@ import { buttonVariants } from '@/components/ui/button'
 import { marked } from 'marked'
 import { Markdown } from '@/components/Markdown'
 import { TopScrollButton } from '@/components/TopScrollButton'
-
+import AutoScrollToLatestWeek from '@/components/AutoScrollToLatestWeek'
+import LatestWeekHeading from '@/components/LatestWeekHeading'
 
 export default async function Page() {
   const markdownDir = path.join(process.cwd(), 'markdown')
@@ -66,11 +67,11 @@ export default async function Page() {
     weekFiles.forEach((file: string) => {
       if (file !== 'slack.md' && file !== 'digest.md' && file.endsWith('.md')) {
         const project = file.replace('.md', '')
-        
+
         if (!weeklyActivities[week].github[project]) {
           weeklyActivities[week].github[project] = []
         }
-        
+
         weeklyActivities[week].github[project].push(`${weekDir}/${project}`)
       }
     })
@@ -80,15 +81,21 @@ export default async function Page() {
     .map((week: string) => parseInt(week, 10))
     .sort((a, b) => a - b)
 
+  const latestWeek = sortedWeeks[sortedWeeks.length - 1]
+
+
   return (
     <section className="mx-auto max-w-xl">
+      <AutoScrollToLatestWeek latestWeek={latestWeek} />
       <h2 className="text-3xl">プロジェクトの歴史</h2>
 
       {/* 週ごとの活動記録（時系列順） */}
       {sortedWeeks.map((week: number) => (
-        <section key={week}>
-          <h3 className="text-2xl mt-8 mb-4">第{week}週の活動</h3>
-
+        <section key={week} id={`week-${week}`}>
+          {week === latestWeek ? (
+            <LatestWeekHeading week={week} />
+          ) : (<h3 className="text-2xl mt-8 mb-4">第{week}週の活動</h3>
+          )}
           {/* 週のダイジェスト表示 */}
           {weeklyDigests[week] && (
             <div className="mb-6">
