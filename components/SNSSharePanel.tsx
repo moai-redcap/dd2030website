@@ -50,20 +50,20 @@ export default function SNSSharePanel({ className = '' }: { className?: string }
   const url = `${origin}${pathname}`
 
   const SNSButtons = () => (
-  <>
-    <HatenaShareButton url={url} title={shareTitle}>
-      <HatenaIcon size={32} round />
-    </HatenaShareButton>
-    <LineShareButton url={url} title={shareTitle}>
-      <LineIcon size={32} round />
-    </LineShareButton>
-    <FacebookShareButton url={url} title={shareTitle}>
-      <FacebookIcon size={32} round />
-    </FacebookShareButton>
-    <TwitterShareButton url={url} title={shareTitle}>
-      <XIcon size={32} round />
-    </TwitterShareButton>
-  </>
+    <>
+      <HatenaShareButton url={url} title={shareTitle}>
+        <HatenaIcon size={32} round />
+      </HatenaShareButton>
+      <LineShareButton url={url} title={shareTitle}>
+        <LineIcon size={32} round />
+      </LineShareButton>
+      <FacebookShareButton url={url} title={shareTitle}>
+        <FacebookIcon size={32} round />
+      </FacebookShareButton>
+      <TwitterShareButton url={url} title={shareTitle}>
+        <XIcon size={32} round />
+      </TwitterShareButton>
+    </>
   )
 
   const [visible, setVisible] = useState(false)
