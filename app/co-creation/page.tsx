@@ -33,7 +33,7 @@ export default async function Page() {
             <h4 className="text-xl">Slackに参加する</h4>
             <p className="mt-4">参加して様子を見てみましょう。</p>
             <Link
-              href="https://join.slack.com/t/w1740803485-clv347541/shared_invite/zt-35bjj11ms-OQtx4Lu08LJ4OqWiRAgNrA"
+              href="https://join.slack.com/t/dd2030/shared_invite/zt-35bjj11ms-OQtx4Lu08LJ4OqWiRAgNrA"
               className={`${buttonVariants()} h-11 mt-4`}
               target="_blank"
             >

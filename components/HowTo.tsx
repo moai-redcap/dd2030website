@@ -40,7 +40,7 @@ export function HowTo() {
             </Card.Description>
           </Card.Body>
           <Card.Footer gap="2">
-            <Link href={'https://join.slack.com/t/w1740803485-clv347541/shared_invite/zt-31oaoavwl-PUQLXlFFLL2KE5jXzR6IwA'} target={'_blank'}>
+            <Link href={'https://join.slack.com/t/dd2030/shared_invite/zt-35bjj11ms-OQtx4Lu08LJ4OqWiRAgNrA'} target={'_blank'}>
               <Button variant="solid">Slack に参加する</Button>
             </Link>
           </Card.Footer>
