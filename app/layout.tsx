@@ -53,7 +53,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       // },
       sameAs: [
         'https://github.com/digitaldemocracy2030',
-        'https://join.slack.com/t/w1740803485-clv347541/shared_invite/zt-32haul96s-Iopa_ET_YcqXWlpzpqABRA',
+        'https://join.slack.com/t/dd2030/shared_invite/zt-35bjj11ms-OQtx4Lu08LJ4OqWiRAgNrA',
       ],
     },
     {
@@ -81,7 +81,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           name: '一般市民も参加できますか？',
           acceptedAnswer: {
             '@type': 'Answer',
-            text: 'はい、どなたでもご参加いただけます。<br/ ><a href="https://join.slack.com/t/w1740803485-clv347541/shared_invite/zt-32haul96s-Iopa_ET_YcqXWlpzpqABRA">こちらのSlack</a>からご参加下さい。',
+            text: 'はい、どなたでもご参加いただけます。<br/ ><a href="https://join.slack.com/t/dd2030/shared_invite/zt-35bjj11ms-OQtx4Lu08LJ4OqWiRAgNrA">こちらのSlack</a>からご参加下さい。',
           },
         },
       ],

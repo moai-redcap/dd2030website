@@ -29,7 +29,6 @@ export default async function Page() {
             政治資金の透明化：政治資金の見える化ダッシュボードの開発
           </p>
         </hgroup>
-        <div className="my-8" />
         <Image
           src="/home__3project__polimoney.webp"
           width={576}
@@ -70,7 +69,7 @@ export default async function Page() {
             </div>
             <NavigateNextIcon />
           </Link>
-          <Link href="/history" className={`${buttonVariants()} h-11`}>
+          <Link href="/history?scroll=latest" className={`${buttonVariants()} h-11`}>
             <span></span>
             直近の活動
             <NavigateNextIcon />

@@ -107,7 +107,7 @@ export default async function Page() {
             <NavigateNextIcon />
           </Link>
           <Link
-            href="/history"
+            href="/history?scroll=latest"
             className={`${buttonVariants()} h-11 sm:w-auto`}
           >
             <span></span>

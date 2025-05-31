@@ -18,6 +18,15 @@ export default function NewsPage() {
       <h1 className="text-3xl font-bold mb-8">お知らせ</h1>
       <ul className="space-y-4">
         <li className="border-b pb-4">
+          <Link href="/news/kouchou-ai-v3" className="text-xl text-blue-600 hover:underline">
+            広聴AI 安定版 v3.0.0 リリースのお知らせ
+          </Link>
+          <p className="text-gray-600 mt-1">2025年5月30日</p>
+          <p className="mt-2">
+            LocalLLM対応とコスト削減機能を搭載した広聴AI安定版v3.0.0をリリースしました。API費用なしでの利用が可能になり、ソースリンク機能も追加されています。
+          </p>
+        </li>
+        <li className="border-b pb-4">
           <Link href="/news/kouchou-ai-v2" className="text-xl text-blue-600 hover:underline">
             広聴AI 安定版 v2.0.0 リリースのお知らせ
           </Link>

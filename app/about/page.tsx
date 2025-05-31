@@ -5,7 +5,6 @@ import { Markdown } from '@/components/Markdown'
 import { CoCreation } from '@/components/CoCreation'
 import { TopScrollButton } from '@/components/TopScrollButton'
 
-
 export default async function Page() {
   const filePath = path.join(process.cwd(), 'markdown', 'about.md')
   const markdown = fs.readFileSync(filePath, 'utf-8')
@@ -27,9 +26,8 @@ export default async function Page() {
       />
       <Markdown content={content} />
       <CoCreation />
-            {/* トップに戻るボタン */}
-            <TopScrollButton />
-      
+      {/* トップに戻るボタン */}
+      <TopScrollButton />
     </div>
   )
 }
