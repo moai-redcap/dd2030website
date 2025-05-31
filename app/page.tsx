@@ -135,6 +135,31 @@ export default async function Page() {
           </div>
         </section>
       </section>
+      <section className="mx-auto max-w-xl mt-20">
+        <div className="gradient w-full h-0.5"></div>
+        <div className="flex gap-4 mt-4"></div>
+        <h2 className="text-3xl mt-5 border-b pb-4">最新のお知らせ</h2>
+        <ul className="space-y-4 mt-4">
+          
+          <li className="border-b pb-4">
+            <Link href="/news/kouchou-ai-v3" className="text-xl text-blue-600 hover:underline">
+              広聴AI 安定版 v3.0.0 リリースのお知らせ
+            </Link>
+            <p className="text-gray-600 mt-1">2025年5月30日</p>
+            <p className="mt-2">
+              LocalLLM対応とコスト削減機能を搭載した広聴AI安定版v3.0.0をリリースしました。API費用なしでの利用が可能になり、ソースリンク機能も追加されています。
+            </p>
+          </li>
+          
+        </ul>
+        <div className="flex gap-4 mt-4">
+          <Link href="/news" className={`${buttonVariants()} h-11`}>
+            <span></span>
+            お知らせ一覧へ
+            <NavigateNextIcon />
+          </Link>
+        </div>
+      </section>
       <CoCreation />
       {/* トップに戻るボタン */}
       <TopScrollButton />
