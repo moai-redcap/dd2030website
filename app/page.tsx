@@ -149,7 +149,7 @@ export default async function Page() {
             <p className="mt-2">
               LocalLLM対応とコスト削減機能を搭載した広聴AI安定版v3.0.0をリリースしました。API費用なしでの利用が可能になり、ソースリンク機能も追加されています。
             </p>
-            </li>
+          </li>
           
         </ul>
         <div className="flex gap-4 mt-4">
