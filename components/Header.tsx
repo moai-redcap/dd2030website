@@ -141,6 +141,16 @@ export function Header() {
                     <div>プロジェクトの歴史</div>
                   </div>
                 </Link>
+                <Link
+                  href="/news"
+                  className="w-full h-11 flex gap-2 flex-wrap"
+                  onClick={handleLinkClick}
+                >
+                  <div className="gradient w-1"></div>
+                  <div className="w-[calc(100%-12px)] flex items-center">
+                    <div>お知らせ</div>
+                  </div>
+                </Link>
               </div>
             </DrawerContent>
           </Drawer>
