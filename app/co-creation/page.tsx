@@ -25,7 +25,7 @@ export default async function Page() {
         </section>
         <section>
           <h3 className="text-2xl mt-10">寄付にご協力いただける方</h3>
-          <p className="mt-4">寄付担当窓口の塔本 shingo.tomoto@gmail.com までご連絡ください</p>
+          <p className="mt-4">寄付担当窓口の塔本 donation@dd2030.org までご連絡ください</p>
         </section>
         <section>
           <h3 className="text-2xl mt-10">開発・デザイン・改善・コミュニティ運営に興味のある方</h3>
