@@ -4,6 +4,7 @@ import Image from 'next/image'
 import NavigateNextIcon from '@mui/icons-material/NavigateNext'
 import { CoCreation } from '@/components/CoCreation'
 import { TopScrollButton } from '@/components/TopScrollButton'
+import { ExternalLink } from 'lucide-react'
 
 export default async function Page() {
   return (
@@ -121,7 +122,16 @@ export default async function Page() {
           <p>
             「Polimoney」プロジェクトは、政治とお金にまつわる課題をボトムから解決したいと考え、スウェーデンで運用されている透明性の高い政治運営の仕組みを参考に発足しました。
           </p>
-          <div className="flex gap-4 mt-4">
+          <div className="flex gap-4 mt-4 flex-wrap">
+            <Link
+              href="https://polimoney.dd2030.org/"
+              className={`${buttonVariants()} h-11`}
+              target="_blank"
+            >
+              <ExternalLink className="mr-2 h-5 w-5" />
+              Webサイトを見る
+              <NavigateNextIcon />
+            </Link>
             <Link href="/case/polimoney" className={`${buttonVariants()} h-11`}>
               <span></span>
               活用事例
