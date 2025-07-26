@@ -18,7 +18,7 @@ export default async function Page() {
 
   const getWeekFromDirname = (dirname: string) => {
     const match = dirname.match(/week(\d+)_/)
-    return match && match[1] ? parseInt(match[1], 10) : 0
+    return match?.[1] ? parseInt(match[1], 10) : 0
   }
 
   const getProjectDisplayName = (projectName: string) => {
