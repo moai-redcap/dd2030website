@@ -14,6 +14,11 @@ export default async function Page() {
         <hgroup>
           <h2 className="text-3xl">Polimoney</h2>
           <div className="flex gap-4 mt-20">
+            <Link href="/case/polimoney" className={`${buttonVariants()} h-11`}>
+              <span></span>
+              活用事例を見る
+              <NavigateNextIcon />
+            </Link>
             {/* <Link href="" className={`${buttonVariants()} h-11`}>
             <span></span>
             使い方を見てみる
