@@ -5,6 +5,7 @@ import NavigateNextIcon from '@mui/icons-material/NavigateNext'
 import GitHubIcon from '@mui/icons-material/GitHub'
 import { CoCreation } from '@/components/CoCreation'
 import { TopScrollButton } from '@/components/TopScrollButton'
+import { ExternalLink } from 'lucide-react'
 
 export default async function Page() {
   return (
@@ -13,6 +14,11 @@ export default async function Page() {
         <hgroup>
           <h2 className="text-3xl">Polimoney</h2>
           <div className="flex gap-4 mt-20">
+            <Link href="/case/polimoney" className={`${buttonVariants()} h-11`}>
+              <span></span>
+              活用事例を見る
+              <NavigateNextIcon />
+            </Link>
             {/* <Link href="" className={`${buttonVariants()} h-11`}>
             <span></span>
             使い方を見てみる
@@ -28,6 +34,17 @@ export default async function Page() {
           <p className="font-bold mt-2">
             政治資金の透明化：政治資金の見える化ダッシュボードの開発
           </p>
+          <div className="flex gap-4 mt-4 flex-wrap">
+            <Link
+              href="https://polimoney.dd2030.org/"
+              className={`${buttonVariants()} h-11`}
+              target="_blank"
+            >
+              <ExternalLink className="mr-2 h-5 w-5" />
+              Webサイトを見る
+              <NavigateNextIcon />
+            </Link>
+          </div>
         </hgroup>
         <Image
           src="/home__3project__polimoney.webp"

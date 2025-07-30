@@ -13,6 +13,11 @@ export default async function Page() {
         <hgroup>
           <h2 className="text-3xl">広聴AI</h2>
           <div className="flex gap-4 mt-20">
+            <Link href="/case/kouchou-ai" className={`${buttonVariants()} h-11`}>
+              <span></span>
+              活用事例を見る
+              <NavigateNextIcon />
+            </Link>
             <Link href="https://github.com/digitaldemocracy2030/kouchou-ai/tree/main/how_to_use" className={`${buttonVariants()} h-11`}>
               <span></span>
               使い方を見てみる
