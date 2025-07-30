@@ -11,7 +11,6 @@ export function Footer() {
             className={`${buttonVariants({ variant: 'ghost' })} h-11`}
             target="_blank"
           >
-            <span></span>
             Slackに参加
           </Link>
         </div>
@@ -21,7 +20,6 @@ export function Footer() {
             className={`${buttonVariants({ variant: 'ghost' })} h-11`}
             target="_blank"
           >
-            <span></span>
             GitHub
           </Link>
         </div>
@@ -31,19 +29,16 @@ export function Footer() {
             className={`${buttonVariants({ variant: 'ghost' })} h-11`}
             target="_blank"
           >
-            <span></span>
             Note
           </Link>
         </div>
         <div>
           <Link href="/policies/privacy" className={`${buttonVariants({ variant: 'ghost' })} h-11`}>
-            <span></span>
             プライバシーポリシー
           </Link>
         </div>
         <div>
           <Link href="/policies/terms" className={`${buttonVariants({ variant: 'ghost' })} h-11`}>
-            <span></span>
             利用規約
           </Link>
         </div>
