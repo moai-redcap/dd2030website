@@ -58,7 +58,7 @@ export default async function Page() {
         <section>
           <h3 className="text-2xl mt-10">歴史</h3>
           <p className="mt-4">
-            広聴AIの起源は2023年の「Talk to the City」にさかのぼります。これは米国AI Objective InstituteのChristopher Hsuehらによって開発されたオープンソースのAIブロードリスニングツールです。
+            広聴AIの起源は2023年の「Talk to the City」にさかのぼります。これは米国AI Objective Institutesによって開発されたオープンソースのAIブロードリスニングツールです。
           </p>
           <p className="mt-4">
             日本では、2024年の都知事選において安野たかひろのチームがTalk to the Cityを活用し、X（旧Twitter）上の都知事選に関する発言を集約・可視化する試みが行われました。2024年には、日本テレビの衆院選報道でAIによる意見分析が実施され、「シン東京2050」プロジェクトでも使用されました。
