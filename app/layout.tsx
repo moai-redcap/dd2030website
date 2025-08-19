@@ -53,7 +53,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       // },
       sameAs: [
         'https://github.com/digitaldemocracy2030',
-        'https://join.slack.com/t/dd2030/shared_invite/zt-35bjj11ms-OQtx4Lu08LJ4OqWiRAgNrA',
+        'https://join.slack.com/t/dd2030/shared_invite/zt-3bwgwcbzk-yFCRN81QhQM1WN2Q~R12UQ',
       ],
     },
     {
