@@ -4,6 +4,7 @@ import { Footer } from '@/components/Footer'
 import './global.css'
 import './content.css'
 import { biz_udGothic400, inter } from '@/lib/fonts'
+import NextTopLoader from 'nextjs-toploader'
 
 export const metadata: Metadata = {
   title: 'デジタル民主主義2030',
@@ -94,6 +95,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       suppressHydrationWarning
     >
       <body>
+        <NextTopLoader showSpinner={false} />
         {/* JSON-LD構造化データを埋め込み */}
         <script
           type="application/ld+json"
