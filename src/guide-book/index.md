@@ -25,6 +25,6 @@ DD2030に興味を持って参加してくれた方が、スムーズに活動�
 <small>
 
 このガイドブックは [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) ライセンスのもとで公開されています。
-© 2026 デジタル民主主義2030（DD2030） | [LICENSE](https://github.com/digitaldemocracy2030/guide-book/blob/main/LICENSE)
+© 2026 デジタル民主主義2030（DD2030） | [LICENSE](./LICENSE)
 
 </small>

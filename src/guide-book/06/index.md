@@ -21,23 +21,23 @@ DD2030の活動の中心はSlackです。参加は無料で、どなたでも歓
 
 ## 公式サイト・リンク集
 
-| リンク | URL |
-|--------|-----|
-| **DD2030 公式サイト** | https://dd2030.org/ |
-| **Project Coreloop** | https://coreloop.dd2030.org/ |
+| リンク                     | URL                                                    |
+| -------------------------- | ------------------------------------------------------ |
+| **DD2030 公式サイト**      | https://dd2030.org/                                    |
+| **Project Coreloop**       | https://coreloop.dd2030.org/                           |
 | **オンライン広告詐欺対策** | https://coreloop.dd2030.org/online-ad-fraud-prevention |
-| **広聴AI** | https://dd2030.org/kouchou-ai/ |
-| **いどばた** | https://dd2030.org/idobata/ |
-| **ブロードリスニング** | https://dd2030.org/broad-listening/ |
+| **広聴AI**                 | https://dd2030.org/kouchou-ai/                         |
+| **いどばた**               | https://dd2030.org/idobata/                            |
+| **ブロードリスニング**     | https://dd2030.org/broad-listening/                    |
 
 ---
 
 ## 書籍・参考資料
 
-| 資料 | URL |
-|------|-----|
-| **『選挙を変えたブロードリスニング』** | https://broadlisteningbook.com/ |
-| **Broad Listening Book（英語版）** | https://broadlisteningbook.com/ |
+| 資料                                                 | URL                             |
+| ---------------------------------------------------- | ------------------------------- |
+| **『政治・自治体・企業に広がるブロードリスニング』** | https://broadlisteningbook.com/ |
+| **Broad Listening Book（英語版）**                   | https://broadlisteningbook.com/ |
 
 ---
 
@@ -45,17 +45,17 @@ DD2030の活動の中心はSlackです。参加は無料で、どなたでも歓
 
 DD2030のプロダクトはオープンソースで開発されています。
 
-| リポジトリ | URL |
-|-----------|-----|
-| **DD2030 GitHub Organization** | https://github.com/digitaldemocracy2030 |
-| **広聴AI** | https://github.com/digitaldemocracy2030/kouchou-ai |
+| リポジトリ                     | URL                                                |
+| ------------------------------ | -------------------------------------------------- |
+| **DD2030 GitHub Organization** | https://github.com/digitaldemocracy2030            |
+| **広聴AI**                     | https://github.com/digitaldemocracy2030/kouchou-ai |
 
 ---
 
 ## 関連動画
 
-| 動画 | URL |
-|------|-----|
+| 動画                                                             | URL                                      |
+| ---------------------------------------------------------------- | ---------------------------------------- |
 | **【オードリー・タンさん出演】AIと民主主義に関する超党派勉強会** | https://www.youtube.com/live/C8_PzKO0Y-o |
 
 ---
