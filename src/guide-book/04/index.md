@@ -7,8 +7,6 @@ content_classes:
   - prose
 ---
 
-> **このガイドブックは整備中です。**
-
 この章では、DD2030にどう参加し、何から始めればよいかを説明します。
 
 ## 「私は何をすればいいのか」
@@ -56,21 +54,14 @@ Slackに参加したら、まず以下のようなチャンネルを確認して
 
 ## 各プロジェクトへの参加方法
 
-### 広聴AI
-* **GitHub：** https://github.com/digitaldemocracy2030/kouchou-ai
-* **紹介ページ：** https://dd2030.org/kouchou-ai/
-* 市民の声をAIで集約・構造化・可視化するツール
+各プロジェクトの詳細は[第3章：現在動いているプロジェクト](../03/)を参照してください。GitHubのIssueに「good first issue」タグが付いているものが、最初の貢献に適しています。
 
-### いどばた
-* **紹介ページ：** https://dd2030.org/idobata/
-* 拡張熟議を支援するプラットフォーム
-
-### Project Coreloop
-* **紹介ページ：** https://coreloop.dd2030.org/
-* 現在は「オンライン広告詐欺対策」プロジェクトが進行中
-
-### Polimoney
-* 政治資金の透明化に取り組むプロジェクト
+| プロジェクト | GitHub | 紹介ページ |
+|---|---|---|
+| 広聴AI | [kouchou-ai](https://github.com/digitaldemocracy2030/kouchou-ai) | [dd2030.org/kouchou-ai](https://dd2030.org/kouchou-ai/) |
+| いどばた | [idobata](https://github.com/digitaldemocracy2030/idobata) | [dd2030.org/idobata](https://dd2030.org/idobata/) |
+| Project Coreloop | — | [coreloop.dd2030.org](https://coreloop.dd2030.org/) |
+| Polimoney | [polimoney](https://github.com/digitaldemocracy2030/polimoney) | [polimoney.dd2030.org](https://polimoney.dd2030.org/) |
 
 ---
 
