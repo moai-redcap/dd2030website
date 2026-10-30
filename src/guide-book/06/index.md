@@ -9,6 +9,8 @@ content_classes:
 
 > **このガイドブックは整備中です。**
 
+この章では、DD2030の公式リンク・参考資料・問い合わせ先をまとめています。
+
 ## DD2030に参加する
 
 ### Slack
@@ -49,6 +51,8 @@ DD2030のプロダクトはオープンソースで開発されています。
 | ------------------------------ | -------------------------------------------------- |
 | **DD2030 GitHub Organization** | https://github.com/digitaldemocracy2030            |
 | **広聴AI**                     | https://github.com/digitaldemocracy2030/kouchou-ai |
+| **いどばた**                   | https://github.com/digitaldemocracy2030/idobata    |
+| **Polimoney**                  | https://github.com/digitaldemocracy2030/polimoney  |
 
 ---
 
