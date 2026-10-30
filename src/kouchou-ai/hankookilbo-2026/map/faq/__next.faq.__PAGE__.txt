@@ -1,0 +1,52 @@
+1:"$Sreact.fragment"
+2:"static/chunks/8681-944271cdbcae0527.js"
+3:"static/chunks/9178-b670cc704dd221dc.js"
+4:"static/chunks/4123-aaf9aa1c6730dcff.js"
+5:"static/chunks/9173-7a101865ed5bab6b.js"
+6:"static/chunks/4280-cca2adaa5b425c72.js"
+7:"static/chunks/app/layout-b89bfa15a337bfa0.js"
+8:I[80018,["8681","$2","9178","$3","4123","$4","9173","$5","4280","$6","7177","$7"],"Provider"]
+9:I[70685,[],""]
+a:I[67625,[],""]
+11:"static/chunks/3eb0f9dd-64510ffb871af508.js"
+12:"static/chunks/8614-01f72630199729e2.js"
+13:"static/chunks/5568-d2530ee09d991206.js"
+14:"static/chunks/8663-e525b92e7bef13f6.js"
+15:"static/chunks/8305-fd80f061ed153066.js"
+16:"static/chunks/3800-3c98b2b00d42b357.js"
+17:"static/chunks/3966-73e551241f863526.js"
+18:"static/chunks/app/faq/page-bdec901f89896a5e.js"
+19:I[78514,["7122","$11","8681","$2","8614","$12","9178","$3","5568","$13","8663","$14","8305","$15","9173","$5","3800","$16","3966","$17","7505","$18"],"Box"]
+1a:I[59852,["7122","$11","8681","$2","8614","$12","9178","$3","5568","$13","8663","$14","8305","$15","9173","$5","3800","$16","3966","$17","7505","$18"],"VStack"]
+1b:I[92221,["7122","$11","8681","$2","8614","$12","9178","$3","5568","$13","8663","$14","8305","$15","9173","$5","3800","$16","3966","$17","7505","$18"],"Heading"]
+1c:I[91008,["7122","$11","8681","$2","8614","$12","9178","$3","5568","$13","8663","$14","8305","$15","9173","$5","3800","$16","3966","$17","7505","$18"],"Text"]
+1d:I[8583,["7122","$11","8681","$2","8614","$12","9178","$3","5568","$13","8663","$14","8305","$15","9173","$5","3800","$16","3966","$17","7505","$18"],"Code"]
+25:"ViewportBoundary"
+26:I[1408,[],"$25"]
+27:"MetadataBoundary"
+28:I[1408,[],"$27"]
+29:"$Sreact.suspense"
+:HL["/kouchou-ai/hankookilbo-2026/map/_next/static/css/a63443551c7d7d9f.css","style"]
+:HL["https://fonts.googleapis.com/css2?family=BIZ+UDPGothic&display=swap","style"]
+c:X
+f:X
+f:C
+10:[["children",{"s":"__PAGE__","h":160,"d":{"r":["$","$1","c",{"children":[["$","$L19",null,{"className":"container","py":12,"children":["$","$L1a",null,{"maxW":"800px","mx":"auto","gap":6,"align":"stretch","children":[["$","$L1b",null,{"as":"h1","size":"lg","color":"red.600","children":"API接続エラー"}],["$","$L19",null,{"bg":"red.50","p":6,"borderRadius":"md","borderLeft":"4px solid","borderLeftColor":"red.500","children":[["$","$L1c",null,{"fontWeight":"bold","mb":2,"children":"データの取得に失敗しました"}],["$","$L1c",null,{"children":"APIサーバーに接続できませんでした。サーバーの設定を確認してください。"}]]}],["$","$L19",null,{"bg":"gray.50","p":6,"borderRadius":"md","children":[["$","$L1c",null,{"fontWeight":"bold","mb":3,"children":"接続先情報"}],["$","$L1a",null,{"align":"stretch","gap":2,"children":[["$","$L19",null,{"children":[["$","$L1c",null,{"fontSize":"sm","color":"gray.600","children":"API URL:"}],["$","$L1d",null,{"p":2,"display":"block","bg":"gray.100","borderRadius":"sm","children":"(未設定)"}]]}],["$","$L19",null,{"children":[["$","$L1c",null,{"fontSize":"sm","color":"gray.600","children":"リクエスト元:"}],["$","$L1d",null,{"p":2,"display":"block","bg":"gray.100","borderRadius":"sm","children":"サーバーサイド (SSR)"}]]}],["$","$L19",null,{"children":[["$","$L1c",null,{"fontSize":"sm","color":"gray.600","children":"エラー詳細:"}],["$","$L1d",null,{"p":2,"display":"block","bg":"gray.100","borderRadius":"sm","whiteSpace":"pre-wrap","children":"Failed to parse URL from /meta/metadata.json"}]]}]]}]]}],["$","$L19",null,{"bg":"blue.50","p":6,"borderRadius":"md","borderLeft":"4px solid","borderLeftColor":"blue.500","children":[["$","$L1c",null,{"fontWeight":"bold","mb":3,"children":"考えられる原因と対処法"}],["$","$L1a",null,{"align":"stretch","gap":4,"children":[["$","$L19",null,{"children":[["$","$L1c",null,{"fontWeight":"semibold","mb":1,"children":"1. 環境変数の設定が正しくない"}],"$L1e","$L1f"]}],"$L20","$L21"]}]]}],"$L22"]}]}],null,"$L23"]}],"p":"$@24","v":null,"s":"$c"}}]]
+d:[["children",{"s":"faq","h":96,"d":{"r":["$","$1","c",{"children":[null,["$","$L9",null,{"parallelRouterKey":"children","template":["$","$La",null,{}]}]]}],"p":"$@e","v":"$f","s":"$c"},"c":"$Q10"}]]
+0:{"t":{"t":{"s":"","h":80,"d":{"r":["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/kouchou-ai/hankookilbo-2026/map/_next/static/css/a63443551c7d7d9f.css","precedence":"next"}]],["$","html",null,{"suppressHydrationWarning":true,"lang":"ja","children":[["$","head",null,{"children":[["$","link",null,{"rel":"preconnect","href":"https://fonts.googleapis.com"}],["$","link",null,{"rel":"preconnect","href":"https://fonts.gstatic.com","crossOrigin":"anonymous"}],["$","link",null,{"href":"https://fonts.googleapis.com/css2?family=BIZ+UDPGothic&display=swap","rel":"stylesheet"}],["$","link",null,{"rel":"icon","href":"/kouchou-ai/hankookilbo-2026/map/meta/icon.png","sizes":"any"}],false]}],["$","body",null,{"children":[["$","div",null,{"id":"report-app","children":["$","$L8",null,{"children":["$","$L9",null,{"parallelRouterKey":"children","template":["$","$La",null,{}],"notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]]}]}]}],[["$","aside",null,{"id":"local-file-notice","hidden":true,"style":{"maxWidth":750,"margin":"40px auto","padding":24,"lineHeight":1.8},"children":[["$","h1",null,{"children":"この出力はWebサーバー経由で開いてください"}],["$","p",null,{"children":"HTMLファイルを直接開くと、ブラウザの制約でレポートのデータを読み込めません。"}],["$","p",null,{"children":"展開した出力フォルダーで次のコマンドを実行し、表示されたサーバーをブラウザで開いてください（Pythonが必要です）。"}],["$","pre",null,{"children":"python -m http.server 3000 --bind 127.0.0.1"}],["$","p",null,{"children":["$","a",null,{"href":"http://localhost:3000/","children":"http://localhost:3000/ を開く"}]}],["$","p",null,{"children":"または、出力フォルダー一式をWebサーバーへ配置してください。HTMLだけでなく付属ファイルも必要です。"}],["$","p",null,{"children":"serverless版の「単一HTMLレポート」と、本体のWeb向け静的出力は異なる形式です。"}]]}],["$","script",null,{"dangerouslySetInnerHTML":{"__html":"if (location.protocol === \"file:\") {\n  document.getElementById(\"local-file-notice\").hidden = false;\n  document.getElementById(\"report-app\").hidden = true;\n}"}}]]]}]]}]]}],"p":"$@b","v":null,"s":"$c"},"c":"$Qd"},"h":{"r":["$","$1","h",{"children":[null,["$","$L26",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","$L28",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$29",null,{"name":"Next.Metadata","children":[]}]}],null]}],null]}],"p":"$@2a","v":null,"s":"$c"}},"a":"$@2b","u":"$@2c","b":"ea15oxP_mEHlzogSW9p89"}
+2d:I[1408,[],"OutletBoundary"]
+1e:["$","$L1c",null,{"fontSize":"sm","color":"gray.700","mb":2,"children":["Container Apps環境では、",["$","$L1d",null,{"children":"api:8000"}],"のような内部Docker ネットワーク名は使用できません。APIの外部公開URL（FQDN）を設定してください。"]}]
+1f:["$","$L19",null,{"bg":"white","p":3,"borderRadius":"sm","fontSize":"sm","children":[["$","$L1c",null,{"fontWeight":"medium","mb":1,"children":"設定例:"}],["$","$L1d",null,{"display":"block","p":2,"bg":"gray.100","children":"NEXT_PUBLIC_API_BASEPATH=https://your-api.example.com"}],["$","$L1d",null,{"display":"block","p":2,"bg":"gray.100","mt":1,"children":"API_BASEPATH=https://your-api.example.com"}]]}]
+20:["$","$L19",null,{"children":[["$","$L1c",null,{"fontWeight":"semibold","mb":1,"children":"2. APIサーバーが起動していない"}],["$","$L1c",null,{"fontSize":"sm","color":"gray.700","children":"APIサーバーが正常に起動しているか確認してください。"}]]}]
+21:["$","$L19",null,{"children":[["$","$L1c",null,{"fontWeight":"semibold","mb":1,"children":"3. ネットワーク接続の問題"}],["$","$L1c",null,{"fontSize":"sm","color":"gray.700","children":"ファイアウォールやネットワーク設定により、APIサーバーへのアクセスがブロックされている可能性があります。"}]]}]
+22:["$","$L19",null,{"bg":"yellow.50","p":4,"borderRadius":"md","fontSize":"sm","children":[["$","$L1c",null,{"fontWeight":"bold","mb":1,"children":"管理者向け情報"}],["$","$L1c",null,{"color":"gray.700","children":["このエラーはサーバー側でAPIへの接続に失敗した場合に表示されます。環境変数",["$","$L1d",null,{"children":"API_BASEPATH"}],"が正しいか確認してください。"]}]]}]
+23:["$","$L2d",null,{"children":["$","$29",null,{"name":"Next.MetadataOutlet","children":"$@2e"}]}]
+c:300
+2e:null
+2c:true
+c:C
+2b:0
+e:"$undefined"
+b:"$undefined"
+2a:"$undefined"
+24:"$undefined"

@@ -1,0 +1,5 @@
+:HL["/kouchou-ai/hankookilbo-2026/map/_next/static/css/a63443551c7d7d9f.css","style"]
+:HL["https://fonts.googleapis.com/css2?family=BIZ+UDPGothic&display=swap","style"]
+2:[["children",{"s":"__PAGE__","h":160}]]
+1:[["children",{"s":"faq","h":96,"c":"$Q2"}]]
+0:{"b":"ea15oxP_mEHlzogSW9p89","t":{"t":{"s":"","h":80,"c":"$Q1"}}}
