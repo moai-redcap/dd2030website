@@ -1,0 +1,81 @@
+---
+layout: page.vto
+title: 韓国の政治YouTubeのチャットを広聴AIで分析する（韓国日報）
+description: 韓国日報の取材で、韓国の政治YouTube 6チャンネルのライブチャット3,000件を広聴AIで分析した結果です。意見の地図と図を日本語・英語・韓国語で公開しています。
+---
+
+<section class="mx-auto max-w-2xl mt-10">
+  <p class="mt-4">
+    韓国日報（한국일보）の企画「유튜브 부족주의（YouTube部族主義）」の取材で、韓国日報が収集した韓国の政治YouTube 6チャンネルのライブチャットを、韓国日報と西尾泰和（デジタル民主主義2030）が広聴AIで分析しました。結果は2026年10月22日の記事2本で紹介されました。このページでは、その分析結果を公開します。
+  </p>
+  <div class="mt-4 flex flex-wrap gap-4">
+    <a href="https://www.hankookilbo.com/news/article/A2026101822540005458" target="_blank" rel="noopener noreferrer" class="btn btn-outline h-9">取材記事（韓国語） →</a>
+    <a href="https://www.hankookilbo.com/news/article/A2026102001300003559" target="_blank" rel="noopener noreferrer" class="btn btn-outline h-9">分析記事（韓国語） →</a>
+  </div>
+
+  <h2 class="text-2xl mt-12">分析したデータ</h2>
+  <p class="mt-4">
+    進歩寄りの3チャンネル（キム・オジュンのニュース工場、メブルショー、イ・ドンヒョンTV）と、保守寄りの3チャンネル（コ・ソングクTV、ペ・スンヒ弁護士、神の一手）の、2026年1〜8月のライブチャットから、チャンネルごとに500件ずつ、計3,000件を選びました。進歩寄り・保守寄りはチャンネルの一般的な分類で、投稿者本人の立場を表すものではありません。
+  </p>
+
+  <h2 class="text-2xl mt-12">意見の地図</h2>
+  <p class="mt-4">
+    広聴AIで作った地図です。点は抽出した意見1件で、近い点ほど内容が似ています。各地図の上部で日本語・English・한국어を切り替えられます。
+  </p>
+  <div class="mt-4 flex flex-wrap gap-4">
+    <a href="./map/a-full-3000/" class="btn btn-primary h-9">6チャンネル全体の地図（2,914意見） →</a>
+    <a href="./map/a-no-hate/" class="btn btn-outline h-9">侮辱・ヘイト判定を除いた地図（2,707意見） →</a>
+    <a href="./map/a-policy-only/" class="btn btn-outline h-9">政策提案と判定された意見の地図（155意見） →</a>
+  </div>
+  <p class="mt-6">チャンネル別の地図（チャンネルごとに作り直しているので、ほかの地図とは位置・群が対応しません）:</p>
+  <ul class="mt-2 list-disc pl-6">
+    <li><a class="link" href="./map/a-channel-03/">キム・オジュンのニュース工場</a>（進歩寄り）</li>
+    <li><a class="link" href="./map/a-channel-01/">メブルショー</a>（進歩寄り）</li>
+    <li><a class="link" href="./map/a-channel-06/">イ・ドンヒョンTV</a>（進歩寄り）</li>
+    <li><a class="link" href="./map/a-channel-02/">コ・ソングクTV</a>（保守寄り）</li>
+    <li><a class="link" href="./map/a-channel-04/">ペ・スンヒ弁護士</a>（保守寄り）</li>
+    <li><a class="link" href="./map/a-channel-05/">神の一手</a>（保守寄り）</li>
+  </ul>
+
+  <h2 class="text-2xl mt-12">分かったこと</h2>
+  <h3 class="text-xl mt-8">大きな話題は両方の陣営に共通していた</h3>
+  <p class="mt-4">
+    3,000件のうち2,663件から意見を抽出し、同じ文をまとめて2,914件の意見にしました。これを10の群に分けると、最も大きい群は「対立激化と排除要求」（496件）、次が「個人・団体への支持表明とリーダーシップ評価」（434件）でした。10の群のどれでも、進歩寄りチャンネルから来た意見の割合は42〜67%の間にあり（全体では51%）、どちらか一方の陣営のチャンネルだけでできた群はありませんでした。一方に大きく偏ったのは、もっと細かい群の、特定の人物についての話でした。
+  </p>
+  <img class="mt-4" src="./images/channel-groups-ja.png" alt="チャンネルの区分で色分けした意見の地図。進歩寄りチャンネル由来1,486件と保守寄りチャンネル由来1,428件が地図全体に混ざって分布している">
+  <img class="mt-4" src="./images/cluster-composition-ja.png" alt="10の群それぞれで、進歩寄りと保守寄りのチャンネルに由来する意見の割合を示す横棒グラフ。進歩寄りの割合は42〜67%">
+  <p class="mt-2 text-sm">한국어: <a class="link" href="./images/channel-groups-ko.png">지도</a> / <a class="link" href="./images/cluster-composition-ko.png">구성</a>　English: <a class="link" href="./images/channel-groups-en.png">map</a> / <a class="link" href="./images/cluster-composition-en.png">composition</a></p>
+
+  <h3 class="text-xl mt-8">同じ話題なら、立場が逆でも同じ群に入る</h3>
+  <p class="mt-4">
+    広聴AIは「誰が言ったか」ではなく「何について言ったか」で意見をまとめます。そのため、同じ話題について正反対の意見が同じ群に入ります。群が同じでも、立場まで同じとは限りません。賛否の割合は出していません。
+  </p>
+
+  <h3 class="text-xl mt-8">侮辱・ヘイトと判定された意見は7.1%</h3>
+  <p class="mt-4">
+    AIで、意見ごとに侮辱・ヘイト表現にあたるかを判定すると、2,914件のうち207件（7.1%）でした。これらを消すのではなく、地図の上でどこにあるかが見えるようにしています。
+  </p>
+  <img class="mt-4" src="./images/hate-before-after-ja.png" alt="侮辱・ヘイトと判定された207件を除く前と後の地図の比較">
+  <p class="mt-2 text-sm">한국어: <a class="link" href="./images/hate-before-after-ko.png">그림</a>　English: <a class="link" href="./images/hate-before-after-en.png">figure</a></p>
+
+  <h3 class="text-xl mt-8">政策につながる意見は少ないが、ある</h3>
+  <p class="mt-4">
+    AIが政策・制度への提案と判定し、侮辱・ヘイトとは判定しなかった意見は155件（5.3%）でした。司法・捜査、選挙制度、政党運営、経済・住宅・税などに分かれます。テーマは日本語の抽出文から仮に付けたもので、政党や人事への要求、あいまいな発言も含みます。
+  </p>
+  <img class="mt-4" src="./images/policy-topics-ja.png" alt="政策提案と判定された155件の意見を、仮のテーマごとに色分けした地図">
+  <p class="mt-2 text-sm">한국어: <a class="link" href="./images/policy-topics-ko.png">그림</a>　English: <a class="link" href="./images/policy-topics-en.png">figure</a></p>
+
+  <h2 class="text-2xl mt-12">読むときの注意</h2>
+  <ul class="mt-4 list-disc pl-6">
+    <li>3,000件はチャンネルごとに同じ数を選んだもので、チャット全体や世論を代表する標本ではありません。点の数は人数や支持率ではありません。</li>
+    <li>群名・説明・抽出文・判定はAIによるもので、誤りを含みえます。たとえば、群名が中身と合っていない群もありました。</li>
+    <li>意見の抽出は日本語で行い、英語・韓国語はその機械翻訳です。韓国語話者による確認はしていません。</li>
+    <li>地図の縦軸・横軸に意味はありません。近い点ほど内容が似ている、という以上の意味は配置にありません。</li>
+    <li>データ提供元の条件により、元のチャット本文と原文へのリンクは掲載していません。</li>
+  </ul>
+
+  <h2 class="text-2xl mt-12">方法</h2>
+  <p class="mt-4">
+    広聴AIで、gpt-4.1により各チャットから意見を日本語の文として抽出し、text-embedding-3-small でベクトルにしました。UMAPで2次元に配置し、k-meansで100群に分けたうえでWard法で10群にまとめ、群名と説明をLLMで生成しました。侮辱・ヘイトと政策提案の判定は、日本語の抽出文に対するAIのyes/no判定で、人による検証はしていません。英語・韓国語への翻訳はローカルで動かしたGemma 4 12B系のモデルで行いました。
+  </p>
+</section>
